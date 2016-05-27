@@ -1,0 +1,986 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>直购接口测试报告</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    /* width: 500px;*/
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>直购接口测试报告</h1>
+<p class='attribute'><strong>Start Time:</strong> 2016-05-24 16:14:04</p>
+<p class='attribute'><strong>Duration:</strong> 0:00:14.815000</p>
+<p class='attribute'><strong>Status:</strong> Pass 12 Failure 2</p>
+
+<p class='description'>Test_Report</p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='passClass'>
+    <td>KWD.framework.testapi.case.test_checkcode.TestCheckCode</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c1',1)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_checkcode</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
+        pass</a>
+
+    <div id='div_pt1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1: 1 {"sign": "9b3e31bfb058a31a240cd4ec175b0389", "p_userid": "", "p_enterprisecode": ""} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çç¨æ·IDï¼","errorCode":"P_Merchant__GetBasicStatus|No_UserId_Found"} No_UserId_Found
+2 {"sign": "59d18c7cc6e7b6d15394f74aef5fca09", "p_userid": 26, "p_enterprisecode": ""} {"errorMessage":"ä¼ä¸ç»ç»æºæä»£ç è¯ä¸è½ä¸ºç©ºï¼","errorCode":"P_Merchant__AddStep1|No_EnterpriseCode_Found"} No_EnterpriseCode_Found
+3 {"sign": "9f92d7f6770d45f7b35e1e45afb038ad", "p_userid": "", "p_enterprisecode": "11111111-1"} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çç¨æ·IDï¼","errorCode":"P_Merchant__GetBasicStatus|No_UserId_Found"} No_UserId_Found
+4 {"sign": "dd7574ae7cbcafa4a8f5b0363a4a069e", "p_userid": 26, "p_enterprisecode": "11111111-1"} {"errorMessage":"è¯¥ç»ç»æºæä»£ç å·²è¢«ä½¿ç¨ï¼","errorCode":"P_Merchant__CheckCode|EnterpriseCode_Exist"} EnterpriseCode_Exist
+5 {"sign": "c9956b66e917947c80cd367756970083", "p_userid": 26, "p_enterprisecode": "99999999-9"} {} {}
+6 {"sign": "bd6bb9aa7c20a26c32d21d2ea2090529", "p_userid": 26, "p_enterprisecode": "1"} {} {}
+7 {"sign": "59d18c7cc6e7b6d15394f74aef5fca09", "p_userid": 26, "p_enterprisecode": " "} {"errorMessage":"ä¼ä¸ç»ç»æºæä»£ç è¯ä¸è½ä¸ºç©ºï¼","errorCode":"P_Merchant__AddStep1|No_EnterpriseCode_Found"} No_EnterpriseCode_Found
+8 {"sign": "9bbd3c0444f7406df7ab6a30e3e8293e", "p_userid": 26, "p_enterprisecode": null} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+9 {"sign": "a1c36d05c3b4fc0aa5e9b8cfc8d30216", "p_userid": 26, "p_enterprisecode": "q@#&lt;&gt;?%^$"} {} {}
+10 {"sign": "81eafd490aca5df1ad9a234d44b35634", "p_userid": 26, "p_enterprisecode": "qqqqqqqq-q"} {} {}
+11 {"sign": "815a05327c5e5b3448d7b0ece52677fb", "p_userid": 26, "p_enterprisecode": "\u6c49\u5b57\u6c49\u5b57\u6c49dfjklsjdlfjsldjflksjdlfkjd\u591a\u5c11\u7ea7\u4e86\u623f\u95f4\u7231\u6b7b\u4e86\u7684\u98ce\u666f\u4e09\u59d0\u592b\u8bf4\u5f00\u4e86\u5927\u59d0\u592b\u987a\u8def\u5feb\u9012\u9632\u6c34\u7b49\u7ea7\u5206\u7c7b\u8003\u8bd5\u975e\u8c01\u79bb\u5f00\u7684\u623f\u95f4\u5546\u91cf\u770b\u629a\u751f\u8def\u53e3\u5206\u7c7b\u8003\u8bd5\u8d39\u9178\u8fa3\u7c89\u662f\u5426\u662f\u51af\u8001\u5e08\u5b57\u6c49\u5b57-\u6c49"} {} {}
+12 {"sign": "17c6d63823a81bd8d3200377a317865e", "p_userid": 26, "p_enterprisecode": "111111111111111111111111111111"} {} {}
+13 {"sign": "0858ebbc394bb35f5293cea68a1d7575", "p_userid": 26, "p_enterprisecode": "1111111111111111111111111111111"} {} {}
+14 {"sign": "e753e06f82be717be5d32e34ea6bddac", "p_userid": 9999, "p_enterprisecode": "99999999-9"} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çç¨æ·IDï¼","errorCode":"P_Merchant__GetBasicStatus|No_UserId_Found"} No_UserId_Found
+15 {"sign": "eb551d19dda99a94c8f637ff80e0c3f0", "p_userid": " ", "p_enterprisecode": "99999999-9"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+16 {"sign": "dd4821280adc60a131758b17fd78d611", "p_userid": null, "p_enterprisecode": "99999999-9"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+17 {"sign": "7bae2767576029a73a4018cde1673e4d", "p_userid": "q@#&lt;&gt;?%^$", "p_enterprisecode": "99999999-9"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+18 {"sign": "c0e4b09c23332ef6ae944a512285e01c", "p_userid": "qqqqqqqq-q", "p_enterprisecode": "99999999-9"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+19 {"sign": "9246e6828db3a61a72159e21ccf88f6b", "p_userid": "\u6c49\u5b57\u6c49\u5b57\u6c49\u5b57\u6c49\u5b57-\u6c49", "p_enterprisecode": "99999999-9"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+20 {"sign": "2d58098c2fb913929feb1173290b87f4", "p_userid": 111111111111111111111111111111, "p_enterprisecode": "99999999-9"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+21 {"sign": "dfbf22c33d4d01d6fa1837f3642fb749", "p_userid": 1111111111111111111111111111111, "p_enterprisecode": "99999999-9"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>KWD.framework.testapi.case.test_checkname.TestCheckName</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c2',1)">Detail</a></td>
+</tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_checkname</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.1')" >
+        pass</a>
+
+    <div id='div_pt2.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.1: 1 {"p_enterprisename": "", "p_userid": 26, "sign": "324e4f18e600b4a5075c299be7247158"} {"errorMessage":"ä¼ä¸åç§°ä¸è½ä¸ºç©ºï¼","errorCode":"P_Merchant__AddStep1|No_EnterpriseName_Found"} No_EnterpriseName_Found
+2 {"p_enterprisename": "\u6d4b\u8bd5", "p_userid": "", "sign": "c23d57dbacaf10cafc9784772458c05e"} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çç¨æ·IDï¼","errorCode":"P_Merchant__GetBasicStatus|No_UserId_Found"} No_UserId_Found
+3 {"p_enterprisename": "\u6d4b\u8bd5", "p_userid": 26, "sign": "751a77c3bb7782910fb97ba6e4264a39"} {"errorMessage":"è¯¥ä¼ä¸åç§°å·²è¢«ä½¿ç¨ï¼","errorCode":"P_Merchant__CheckName|EnterpriseName_Exist"} EnterpriseName_Exist
+4 {"p_enterprisename": "\u6ca1\u6709\u5360\u7528", "p_userid": 26, "sign": "7a394394f799b44971091d6d44c67472"} {} {}
+5 {"p_enterprisename": " ", "p_userid": 26, "sign": "324e4f18e600b4a5075c299be7247158"} {"errorMessage":"ä¼ä¸åç§°ä¸è½ä¸ºç©ºï¼","errorCode":"P_Merchant__AddStep1|No_EnterpriseName_Found"} No_EnterpriseName_Found
+6 {"p_enterprisename": null, "p_userid": 26, "sign": "9bbd3c0444f7406df7ab6a30e3e8293e"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+7 {"p_enterprisename": "q@#&lt;&gt;?%^$", "p_userid": 26, "sign": "23a3bd6599511b0e15e5f7a33a55635a"} {} {}
+8 {"p_enterprisename": "qqqqqqqq-q", "p_userid": 26, "sign": "77e846552a2238d7274483fdec3ee519"} {} {}
+9 {"p_enterprisename": "\u6c49\u5b57\u6c49\u5b57\u6c49\u5b57\u6c49\u5b57-\u6c49", "p_userid": 26, "sign": "d7dc5e034dc8e55dc27a7fbb2683fdeb"} {} {}
+10 {"p_enterprisename": "11111011111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111", "p_userid": 26, "sign": "2d19e3d1101ec4b9964ec4eb958952e8"} {} {}
+11 {"p_enterprisename": "111101111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111", "p_userid": 26, "sign": "84f2da88584cce3d25af5f81191afcc6"} {} {}
+12 {"p_enterprisename": "\u6ca1\u6709\u5360\u7528", "p_userid": 9999, "sign": "67af37e734b2f9771fd5281fea79b88e"} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çç¨æ·IDï¼","errorCode":"P_Merchant__GetBasicStatus|No_UserId_Found"} No_UserId_Found
+13 {"p_enterprisename": "\u6ca1\u6709\u5360\u7528", "p_userid": " ", "sign": "be117b81b1e7590ddcbd92121b1a3cdd"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+14 {"p_enterprisename": "\u6ca1\u6709\u5360\u7528", "p_userid": null, "sign": "7f7b6788ad77d3aa8ee4cba4991a099f"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+15 {"p_enterprisename": "\u6ca1\u6709\u5360\u7528", "p_userid": "q@#&lt;&gt;?%^$", "sign": "7d2add8f45af7ce161890f3cc7e158f6"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+16 {"p_enterprisename": "\u6ca1\u6709\u5360\u7528", "p_userid": "qqqqqqqq-q", "sign": "fc58c580ac0653adf191977474615af2"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+17 {"p_enterprisename": "\u6ca1\u6709\u5360\u7528", "p_userid": "\u6c49\u5b57\u6c49\u5b57\u6c49\u5b57\u6c49\u5b57-\u6c49", "sign": "0899d3345231de38c49ad5b9150d2295"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+18 {"p_enterprisename": "\u6ca1\u6709\u5360\u7528", "p_userid": 111111111111111111111111111111, "sign": "53071f47818e8ee99ed2411eb796d4b0"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+19 {"p_enterprisename": "\u6ca1\u6709\u5360\u7528", "p_userid": 1111111111111111111111111111111, "sign": "82d72749e8e30598305cdb054306bcf9"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>KWD.framework.testapi.case.test_getapplylist.TestGetApplyList</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c3',1)">Detail</a></td>
+</tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_getapplylist</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.1')" >
+        pass</a>
+
+    <div id='div_pt3.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.1: 1 {"p_userid": 999, "sign": "226bf5fe8ca49907d4d47e763c8217a6"} {"errorMessage":"è¯¥ç¨æ·ä¸å­å¨ï¼","errorCode":"P_Merchant__GetApplyList|No_Userid_Found"} No_Userid_Found
+2 {"p_userid": 44, "sign": "f23a30a0427fd33639fe8e162d81ba08"} {"errorMessage":"è¯¥ç¨æ·ä¸å­å¨ï¼","errorCode":"P_Merchant__GetApplyList|No_Userid_Found"} No_Userid_Found
+3 {"p_userid": 26, "sign": "9bbd3c0444f7406df7ab6a30e3e8293e"} {"p_status":7,"p_approvememo":"deny","step2":[{"foundedtime":null,"ecinfo":null,"offlineinfo":null,"registeredcapital":null,"brand":null,"yearsalerroom":null}],"step0":[{"referrer":0,"contacteremail":"57@qq.com","locationname":"åäº¬åäº¬å¸ä¸ååº","contacter":"èç³»äºº57","merchantid":29,"enterprisecode":"11-55","locationid":"110101","managetype":"ç»è¥ç±»å«57","contactermobile":"11111111141","adress":"åä½å°å57","enterprisename":"æ±å­"}],"step1":[{"licenseid":4161,"expirationdate":"2018-01-02","recid":1,"url":"attach/ceshi/1.jpg"},{"licenseid":4163,"expirationdate":"2018-02-03","recid":3,"url":"a4.jpg"},{"licenseid":4162,"expirationdate":"2018-02-03","recid":4,"url":"attach/ceshi/4.jpg"}]} p_status
+4 {"p_userid": "", "sign": "02808564fb59e0726f914be40c07c17d"} {"errorMessage":"è¯¥ç¨æ·ä¸å­å¨ï¼","errorCode":"P_Merchant__GetApplyList|No_Userid_Found"} No_Userid_Found
+5 {"p_userid": " ", "sign": "02808564fb59e0726f914be40c07c17d"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+6 {"p_userid": null, "sign": "e5413e79e4dc296d6e609c27ae9180b5"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+7 {"p_userid": "q@#&lt;&gt;?%^$", "sign": "9cb0aca71f268968f538da9e2b23137e"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+8 {"p_userid": "qqqqqqqq-q", "sign": "fc8b271ba4cd2f35553ac4f05288a931"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+9 {"p_userid": "\u6c49\u5b57\u6c49\u5b57\u6c49\u5b57\u6c49\u5b57-\u6c49", "sign": "4f8589adf4f6576630d74a0be4fa979f"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+10 {"p_userid": 11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111, "sign": "fa0ebdc860715e2db9a9cd76069ba1d9"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+11 {"p_userid": 111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111, "sign": "cf7597af11846752b4efaad8189d1238"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>KWD.framework.testapi.case.test_getarea.TestGetArea</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c4',1)">Detail</a></td>
+</tr>
+
+<tr id='pt4.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_getarea</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.1')" >
+        pass</a>
+
+    <div id='div_pt4.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.1: 1 {"p_id": "0", "sign": "d53d1df4a2abc5eb45f434e6008ffc74"} {"res0":[{"name":"åäº¬","id":"110000"},{"name":"å¤©æ´¥","id":"120000"},{"name":"æ²³å","id":"130000"},{"name":"å±±è¥¿","id":"140000"},{"name":"åèå¤","id":"150000"},{"name":"è¾½å®","id":"210000"},{"name":"åæ","id":"220000"},{"name":"é»é¾æ±","id":"230000"},{"name":"ä¸æµ·","id":"310000"},{"name":"æ±è","id":"320000"},{"name":"æµæ±","id":"330000"},{"name":"å®å¾½","id":"340000"},{"name":"ç¦å»º","id":"350000"},{"name":"æ±è¥¿","id":"360000"},{"name":"å±±ä¸","id":"370000"},{"name":"æ²³å","id":"410000"},{"name":"æ¹å","id":"420000"},{"name":"æ¹å","id":"430000"},{"name":"å¹¿ä¸","id":"440000"},{"name":"å¹¿è¥¿","id":"450000"},{"name":"æµ·å","id":"460000"},{"name":"éåº","id":"500000"},{"name":"åå·","id":"510000"},{"name":"è´µå·","id":"520000"},{"name":"äºå","id":"530000"},{"name":"è¥¿è","id":"540000"},{"name":"éè¥¿","id":"610000"},{"name":"çè","id":"620000"},{"name":"éæµ·","id":"630000"},{"name":"å®å¤","id":"640000"},{"name":"æ°ç","id":"650000"},{"name":"å°æ¹¾","id":"710000"},{"name":"é¦æ¸¯","id":"810000"},{"name":"æ¾³é¨","id":"820000"}]} 110000
+2 {"p_id": "110000", "sign": "4c6551d87dbfb2834b82fe8d4f88721d"} {"res0":[{"name":"åäº¬å¸","id":"110100"}]} 110100
+3 {"p_id": "110100", "sign": "2f1b9740a68984b173d45aed11560d6a"} {"res0":[{"name":"ä¸ååº","id":"110101"},{"name":"è¥¿ååº","id":"110102"},{"name":"æé³åº","id":"110105"},{"name":"ä¸°å°åº","id":"110106"},{"name":"ç³æ¯å±±åº","id":"110107"},{"name":"æµ·æ·åº","id":"110108"},{"name":"é¨å¤´æ²åº","id":"110109"},{"name":"æ¿å±±åº","id":"110111"},{"name":"éå·åº","id":"110112"},{"name":"é¡ºä¹åº","id":"110113"},{"name":"æå¹³åº","id":"110114"},{"name":"å¤§å´åº","id":"110115"},{"name":"ææåº","id":"110116"},{"name":"å¹³è°·åº","id":"110117"},{"name":"å¯äºå¿","id":"110228"},{"name":"å»¶åºå¿","id":"110229"}]} 110101
+4 {"p_id": "110101", "sign": "55048dc34c0c9b8f7e13f5803e6478b9"} {"res0":[]} []
+5 {"p_id": "", "sign": "a819b81abb6e98bb84fed102e8f9d3fe"} {"res0":[]} []
+6 {"p_id": " ", "sign": "a819b81abb6e98bb84fed102e8f9d3fe"} {"res0":[]} []
+7 {"p_id": "&lt;&gt;#$%@#$%", "sign": "16afd834175b8ee09a0d4d8597620bab"} {"res0":[]} []
+8 {"p_id": "djfaks", "sign": "0f4857e0df5155d2cf4ecfaf290beace"} {"res0":[]} []
+9 {"p_id": "\u53d1\u591a\u5c11\u5feb\u4e50", "sign": "04471e64142674aeb8a1ca1f72d2108b"} {"res0":[]} []
+10 {"p_id": "99595959595", "sign": "221d293e5d7fd33a05fcdbed70663a0c"} {"res0":[]} []
+11 {"p_id": "1", "sign": "5f5b1aa52e425ac6818e533da158bae4"} {"res0":[]} []
+12 {"p_id": null, "sign": "e5413e79e4dc296d6e609c27ae9180b5"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>KWD.framework.testapi.case.test_getbasicstatus.TestGetBasicStatus</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c5',1)">Detail</a></td>
+</tr>
+
+<tr id='pt5.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_getbasicstatus</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.1')" >
+        pass</a>
+
+    <div id='div_pt5.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt5.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt5.1: 1 {"p_userid": "", "sign": "02808564fb59e0726f914be40c07c17d"} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çç¨æ·IDï¼","errorCode":"P_Merchant__GetBasicStatus|No_UserId_Found"} No_UserId_Found
+2 {"p_userid": " ", "sign": "02808564fb59e0726f914be40c07c17d"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+3 {"p_userid": null, "sign": "e5413e79e4dc296d6e609c27ae9180b5"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+4 {"p_userid": 26, "sign": "9bbd3c0444f7406df7ab6a30e3e8293e"} {"p_status":7,"p_enterprisename":"æ±å­"} p_status
+5 {"p_userid": "&lt;&gt;%$", "sign": "e0193a4b671eb9458bb5322fa9ab4f3f"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+6 {"p_userid": "qqqq", "sign": "8b4596c2c2a9a676d36201afb329c99a"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+7 {"p_userid": "\u8bb0\u5f55", "sign": "f045deaa341eb3f163fb8ae9a5af2ec6"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+8 {"p_userid": 999, "sign": "226bf5fe8ca49907d4d47e763c8217a6"} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çç¨æ·IDï¼","errorCode":"P_Merchant__GetBasicStatus|No_UserId_Found"} No_UserId_Found
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>KWD.framework.testapi.case.test_getmobile.TestGetMobile</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c6',1)">Detail</a></td>
+</tr>
+
+<tr id='pt6.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_getmobile</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.1')" >
+        pass</a>
+
+    <div id='div_pt6.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt6.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt6.1: 1 {"p_mobile": "13699999999", "sign": "a3bb0ae0a2dba8da8c6398dfb6a5db75"} {} {}
+2 {"p_mobile": "13691466408", "sign": "4f7a69e94479eab63220a51ca78b0f86"} {"errorMessage":"æ¨çææºå·å·²è¢«å ç¨ï¼","errorCode":"P_User__GetMobile|Mobile_Exist"} Mobile_Exist
+3 {"p_mobile": "", "sign": "47d5e1c4c5dae79560c14fcfe1786eb1"} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çææºå·ç ï¼","errorCode":"P_User__GetMobile|Mobile_Wrong"} Mobile_Wrong
+4 {"p_mobile": " ", "sign": "47d5e1c4c5dae79560c14fcfe1786eb1"} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çææºå·ç ï¼","errorCode":"P_User__GetMobile|Mobile_Wrong"} Mobile_Wrong
+5 {"p_mobile": null, "sign": "e5413e79e4dc296d6e609c27ae9180b5"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+6 {"p_mobile": "q@#&lt;&gt;?%^$", "sign": "e47bb4082b460a615d35248740de4b13"} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çææºå·ç ï¼","errorCode":"P_User__GetMobile|Mobile_Wrong"} Mobile_Wrong
+7 {"p_mobile": "qqqqqqqq-q", "sign": "bc66fba1cf9fac80a064dcf7d1f8bf0a"} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çææºå·ç ï¼","errorCode":"P_User__GetMobile|Mobile_Wrong"} Mobile_Wrong
+8 {"p_mobile": "\u6c49\u5b57\u6c49\u5b57\u6c49\u5b57\u6c49\u5b57-\u6c49", "sign": "5585ce7d9e03c85f4641ecc463f24031"} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çææºå·ç ï¼","errorCode":"P_User__GetMobile|Mobile_Wrong"} Mobile_Wrong
+9 {"p_mobile": "11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111", "sign": "28fe7da91d261a6d95e8c602681c8e0a"} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çææºå·ç ï¼","errorCode":"P_User__GetMobile|Mobile_Wrong"} Mobile_Wrong
+10 {"p_mobile": "111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111", "sign": "3345de3a773d125836be46ff4d4c3979"} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çææºå·ç ï¼","errorCode":"P_User__GetMobile|Mobile_Wrong"} Mobile_Wrong
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>KWD.framework.testapi.case.test_getuserpasswordinfo.TestGetUserPasswordInfo</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c7',1)">Detail</a></td>
+</tr>
+
+<tr id='pt7.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_getuserpasswordinfo</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt7.1')" >
+        pass</a>
+
+    <div id='div_pt7.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt7.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt7.1: 1 {"p_username": "13954569174", "p_password": "d08b1bea213f1f511a4a26ff32f1997fc6692053", "sign": "a7f6bd973a9ee3e9f23929ebab0f9334"} {"p_userid":205} p_userid
+2 {"p_username": "13691466408", "p_password": "48d98cb0420fc2ec8c0f7a670bd61ae52f80186c", "sign": "ceeb0ca7886303c3ec8b3a05bddae4ca"} {"errorMessage":"ç¨æ·åå¯ç ä¸å¹éï¼","errorCode":"P_User__GetUserPasswordInfo|No_Password_Match"} No_Password_Match
+3 {"p_username": "13691466408", "p_password": "ed9acd48dccb6ce2a7631e6489958163abfded9f", "sign": "bd9db42aceae18f9c637d4d613abfa40"} {"errorMessage":"ç¨æ·åå¯ç ä¸å¹éï¼","errorCode":"P_User__GetUserPasswordInfo|No_Password_Match"} No_Password_Match
+4 {"p_username": "13691466408", "p_password": null, "sign": "baf0ffa1527fcedbeee4bccebba97848"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+5 {"p_username": "13691466408", "p_password": "3446e6632697f4ad99fdc73930e8bdc602c9b436", "sign": "008b7d2e4f1886fdbf2aaac0cd6400f2"} {"errorMessage":"ç¨æ·åå¯ç ä¸å¹éï¼","errorCode":"P_User__GetUserPasswordInfo|No_Password_Match"} No_Password_Match
+6 {"p_username": "13691466408", "p_password": "d0445a073a849fe2048aad91330e2a04f7dd4104", "sign": "f179ec2131732f9a02160b84024aa17c"} {"errorMessage":"ç¨æ·åå¯ç ä¸å¹éï¼","errorCode":"P_User__GetUserPasswordInfo|No_Password_Match"} No_Password_Match
+7 {"p_username": "13691466408", "p_password": "74508b1f0629f76bf92e989e2a6064383b58c690", "sign": "a5f1c04ca15aa7af9d23576be092ceb9"} {"errorMessage":"ç¨æ·åå¯ç ä¸å¹éï¼","errorCode":"P_User__GetUserPasswordInfo|No_Password_Match"} No_Password_Match
+8 {"p_username": "", "p_password": "a0a930ecde5596c4ac139e35b2e1b3e5e9111dda", "sign": "eaee7086ffdceec2d49694c3fd42736e"} {"errorMessage":"ç¨æ·åä¸å­å¨ï¼","errorCode":"P_User__GetUserPasswordInfo|No_UserName_Found"} No_UserName_Found
+9 {"p_username": " ", "p_password": "a0a930ecde5596c4ac139e35b2e1b3e5e9111dda", "sign": "eaee7086ffdceec2d49694c3fd42736e"} {"errorMessage":"ç¨æ·åä¸å­å¨ï¼","errorCode":"P_User__GetUserPasswordInfo|No_UserName_Found"} No_UserName_Found
+10 {"p_username": null, "p_password": "a0a930ecde5596c4ac139e35b2e1b3e5e9111dda", "sign": "57fdb505b71189f884f668635daad723"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+11 {"p_username": "99999999", "p_password": "a0a930ecde5596c4ac139e35b2e1b3e5e9111dda", "sign": "99a4e8844f813e8888368ecf095a3032"} {"errorMessage":"ç¨æ·åä¸å­å¨ï¼","errorCode":"P_User__GetUserPasswordInfo|No_UserName_Found"} No_UserName_Found
+12 {"p_username": "djkl", "p_password": "a0a930ecde5596c4ac139e35b2e1b3e5e9111dda", "sign": "30a86b3927f9cb2b3c80ecad49c4dbc4"} {"errorMessage":"ç¨æ·åä¸å­å¨ï¼","errorCode":"P_User__GetUserPasswordInfo|No_UserName_Found"} No_UserName_Found
+13 {"p_username": "&lt;&gt;$#@$!%", "p_password": "a0a930ecde5596c4ac139e35b2e1b3e5e9111dda", "sign": "c782d727eda0dca11df108d86fdd1569"} {"errorMessage":"ç¨æ·åä¸å­å¨ï¼","errorCode":"P_User__GetUserPasswordInfo|No_UserName_Found"} No_UserName_Found
+14 {"p_username": "\u6c49\u5b57\u6c49\u5b57", "p_password": "a0a930ecde5596c4ac139e35b2e1b3e5e9111dda", "sign": "2be033f5f322682d70e0691f9c8baa5b"} {"errorMessage":"ç¨æ·åä¸å­å¨ï¼","errorCode":"P_User__GetUserPasswordInfo|No_UserName_Found"} No_UserName_Found
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>KWD.framework.testapi.case.test_addstep1.TestAddStep1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c8',1)">Detail</a></td>
+</tr>
+
+<tr id='ft8.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_addstep1</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.1')" >
+        fail</a>
+
+    <div id='div_ft8.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.1: 15881602676
+{'p_username': '15881602676', 'p_password': '65553ce38c0d3adf5aa10b05186ca0e1987b415a', 'p_mobile': '15881602676', 'sign': 'aaa4d58f4e13f21eea891dcbfafdc540'}
+1 {"p_referrer": 0, "p_contacterEmail": "", "p_adress": "", "p_enterpriseCode": "", "sign": "17b4ef00ddf93526159e9cc570c95dd7", "p_contacter": "", "p_manageType": "", "p_contacterMobile": "", "p_enterpriseName": "", "p_locationid": "", "p_userid": 347} {"errorMessage":"ä¼ä¸åç§°ä¸è½ä¸ºç©ºï¼","errorCode":"P_Merchant__AddStep1|No_EnterpriseName_Found"} No_EnterpriseName_Found
+2 {"p_referrer": 0, "p_contacterEmail": "", "p_adress": "\u5355\u4f4d\u5730\u57401", "p_enterpriseCode": "111-1", "sign": "13a99af69699ddc6e899950ad126fa67", "p_contacter": "\u8054\u7cfb\u4eba1", "p_manageType": "\u7ecf\u8425\u7c7b\u522b1", "p_contacterMobile": "11111111111", "p_enterpriseName": "\u4f01\u4e1a\u540d\u79f0111", "p_locationid": "110101", "p_userid": 347} {"errorMessage":"ä¼ä¸åç§°æç»ç»æºæä»£ç è¯éå¤ï¼","errorCode":"P_Merchant__AddStep1|Userid_Exist"} {}
+Traceback (most recent call last):
+  File "D:\Keyworddriven\KWD\framework\testapi\case\test_addstep1.py", line 18, in test_addstep1
+    self.assertIn(case['code'], case['response'])
+AssertionError: '{}' not found in '{"errorMessage":"\xe4\xbc\x81\xe4\xb8\x9a\xe5\x90\x8d\xe7\xa7\xb0\xe6\x88\x96\xe7\xbb\x84\xe7\xbb\x87\xe6\x9c\xba\xe6\x9e\x84\xe4\xbb\xa3\xe7\xa0\x81\xe8\xaf\x81\xe9\x87\x8d\xe5\xa4\x8d\xef\xbc\x81","errorCode":"P_Merchant__AddStep1|Userid_Exist"}'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>KWD.framework.testapi.case.test_addstep2.TestAddStep2</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c9',1)">Detail</a></td>
+</tr>
+
+<tr id='pt9.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_addstep2</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt9.1')" >
+        pass</a>
+
+    <div id='div_pt9.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt9.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt9.1: 13634363923
+{'p_username': '13634363923', 'p_password': 'df1caa26b45329264ba01eceec7b1f329de8af8d', 'p_mobile': '13634363923', 'sign': 'fe2e5b08af947c1d0f1feaf50ab9d340'}
+{"p_referrer": 0, "p_adress": "s05OdhWBl3YmX8C", "p_enterpriseCode": "s05OdhWBl3YmX8C", "sign": "ef9871ab53300bb52eedce43ea5f97b3", "p_locationid": "110101", "p_contacterEmail": "", "p_userid": 348, "p_contacter": "s05OdhWBl3YmX8C", "p_manageType": "s05OdhWBl3YmX8C", "p_contacterMobile": "13995819962", "p_enterpriseName": "s05OdhWBl3YmX8C"}
+1 {"p_attachlist": "", "p_attachcount": "", "p_userid": 348, "sign": "13c99a74dbd78e3712a496edb2c4a1d0"} {"errorMessage":"è¯·ä¸ä¼ è¥ä¸æ§ç§å¤å°ä»¶ï¼","errorCode":"P_Merchant__EditStep2|No_License1"} No_License1
+2 {"p_attachlist": "", "p_attachcount": 1, "p_userid": 348, "sign": "e77c9fc5869a1c05b885c1e313097ae8"} {"errorMessage":"è¯·ä¸ä¼ è¥ä¸æ§ç§å¤å°ä»¶ï¼","errorCode":"P_Merchant__EditStep2|No_License1"} No_License1
+3 {"p_attachlist": " ", "p_attachcount": 1, "p_userid": 348, "sign": "e77c9fc5869a1c05b885c1e313097ae8"} {"errorMessage":"è¯·ä¸ä¼ è¥ä¸æ§ç§å¤å°ä»¶ï¼","errorCode":"P_Merchant__EditStep2|No_License1"} No_License1
+4 {"p_attachlist": null, "p_attachcount": 1, "p_userid": 348, "sign": "670c18129ff0423f1e3d056087dd39ee"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+5 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]", "p_attachcount": 1, "p_userid": 348, "sign": "096141c642562bfa75814b3a2b4a1239"} {"errorMessage":"è¯·ä¸ä¼ é¶è¡å¼æ·è¯æå¤å°ä»¶ï¼","errorCode":"P_Merchant__EditStep2|No_License4"} No_License4
+6 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/2.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 348, "sign": "2e72674d149624cd34c7d78f63563297"} {"errorMessage":"è¯·ä¸ä¼ é¶è¡å¼æ·è¯æå¤å°ä»¶ï¼","errorCode":"P_Merchant__EditStep2|No_License4"} No_License4
+7 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/2.jpg[,]20180203[,][;]", "p_attachcount": 3, "p_userid": 348, "sign": "9029d5d5d165588eca5d5f9442b00855"} {"errorMessage":"è¯·ä¸ä¼ é¶è¡å¼æ·è¯æå¤å°ä»¶ï¼","errorCode":"P_Merchant__EditStep2|No_License4"} No_License4
+8 {"p_attachlist": "122135444", "p_attachcount": 2, "p_userid": 348, "sign": "f1ab3af3524eda96c638d8bbe7729f2f"} {"errorMessage":"è¯·ä¸ä¼ è¥ä¸æ§ç§å¤å°ä»¶ï¼","errorCode":"P_Merchant__EditStep2|No_License1"} No_License1
+9 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/2.jpg[,]20180203[,][;]", "p_attachcount": 0, "p_userid": 348, "sign": "dafbcc40f4b1445c6da13bbb50825939"} {"errorMessage":"è¯ä»¶æ°éè¾å¥éè¯¯ï¼","errorCode":"P_Merchant__EditStep2|No_Attach"} No_Attach
+10 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/2.jpg[,]20180203[,][;]", "p_attachcount": -2, "p_userid": 348, "sign": "f80c8c53060416723b26dd30328d3451"} {"errorMessage":"è¯ä»¶æ°éè¾å¥éè¯¯ï¼","errorCode":"P_Merchant__EditStep2|No_Attach"} No_Attach
+11 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/2.jpg[,]20180203[,][;]", "p_attachcount": "2.3", "p_userid": 348, "sign": "9470ea4300483c59aa56bc741b44d563"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+12 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 348, "sign": "e999a11c3ea3b27c8ad8e24c8afdaf63"} {} {}
+13 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": " ", "p_userid": 348, "sign": "29a9534abe5630c8347a4d19ae4cb06d"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+14 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": null, "p_userid": 348, "sign": "916e8a135a86bb23452efa8af1fde51b"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+15 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 1, "p_userid": 348, "sign": "f59051008a6b136843c2a5391b530a53"} {"errorMessage":"éä»¶æ°éæ£éªéè¯¯ï¼","errorCode":"P_Merchant__EditStep2|AttachCount_Not_Match"} AttachCount_Not_Match
+16 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 3, "p_userid": 348, "sign": "2c4bb6b5491612bba080a936389f5275"} {"errorMessage":"éä»¶æ°éæ£éªéè¯¯ï¼","errorCode":"P_Merchant__EditStep2|AttachCount_Not_Match"} AttachCount_Not_Match
+17 {"p_attachlist": "1[,][,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 348, "sign": "1e8b87651b0ae7e9c3dd42c59a03c5d6"} {"errorMessage":"è¯·ä¸ä¼ å¿è¦çç§çæä»¶!","errorCode":"P_Merchant__EditStep2|No_Url"} No_Url
+18 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,][,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 348, "sign": "f81c5a588d427b2b30c6281afc7425e9"} {"errorMessage":"è¯·ä¸ä¼ å¿è¦çç§çæä»¶!","errorCode":"P_Merchant__EditStep2|No_Url"} No_Url
+19 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 348, "sign": "5e4a917d4e93626d5c94b254c88bc42e"} {"errorMessage":"è¯·æ£æ¥ä¸ä¼ éä»¶æ ¼å¼ï¼","errorCode":"P_Merchant__EditStep2|attachindex&lt;3"} attachindex&lt;3
+20 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,]", "p_attachcount": 2, "p_userid": 348, "sign": "f4bd7fdffbb166cd8ebd54a7b4a23035"} {"errorMessage":"è¯·ä¸ä¼ é¶è¡å¼æ·è¯æå¤å°ä»¶ï¼","errorCode":"P_Merchant__EditStep2|No_License4"} No_License4
+21 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,][,][;]4[,]attach/ceshi/4.jpg[,][,][;]", "p_attachcount": 2, "p_userid": 348, "sign": "6087e2f83e8b07b9495995e28d81608a"} {"errorMessage":"è¯·ä¸ä¼ å¿è¦çç§çæä»¶!","errorCode":"P_Merchant__EditStep2|No_Url"} No_Url
+22 {"p_attachlist": "qq[,]attach/ceshi/1.jpg[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 348, "sign": "aa989605e00bcb393ef6e6562f833343"} {"errorMessage":"æªç¥éè¯¯","errorCode":"UnknownError"} UnknownError
+23 {"p_attachlist": "1[,]attach/ceshi/1[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 348, "sign": "3c1364c68e06515a13e2a6f4dc01174d"} {} {}
+24 {"p_attachlist": "1[,]1[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 348, "sign": "3d4e621d98d95d21000c22cb7c8dd422"} {} {}
+25 {"p_attachlist": "1[,]null[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 348, "sign": "811b032c9400a2fe4b40ceb8691d7100"} {} {}
+26 {"p_attachlist": "1[,]\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 348, "sign": "abafbce1635d8aab77c9ca9e8dccd5fe"} {} {}
+27 {"p_attachlist": "1[,]\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u4e2d\u6587\u4e2d\u6587\u4e2d\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u658711111111111111\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587[,]20180102[,][;]4[,]\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u4e2d\u6587\u4e2d\u6587\u4e2d\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u658711111111111111\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 348, "sign": "d6ce38965333bca5419dafac12fcd124"} {} {}
+28 {"p_attachlist": "1[,]\u4e2d\u65871\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 348, "sign": "22c588ef4cb0fa7372ce3257b240677d"} {"errorMessage":"æªç¥éè¯¯","errorCode":"UnknownError"} UnknownError
+29 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 348, "sign": "1d2256bad9734f515e3c1e83a60b3a01"} {"errorMessage":"è¯·ä¸ä¼ é¶è¡å¼æ·è¯æå¤å°ä»¶ï¼","errorCode":"P_Merchant__EditStep2|No_License4"} No_License4
+30 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]1[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 348, "sign": "be515b0914761cf111bea1c13a8cc7ee"} {"errorMessage":"è¯·ä¸ä¼ è¥ä¸æ§ç§å¤å°ä»¶ï¼","errorCode":"P_Merchant__EditStep2|No_License1"} No_License1
+31 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 3, "p_userid": 348, "sign": "d0decfbfd95459444bce58dfb795215c"} {} {}
+32 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/4.jpg[,]20180203[,][;]2[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 4, "p_userid": 348, "sign": "0f9af2aae9ff3cbc6db4034a1b4138eb"} {"errorMessage":"è¯·ä¸è¦éå¤ä¸ä¼ ç¨å¡ç»è®°è¯å¤å°ä»¶ï¼","errorCode":"P_Merchant__EditStep2|More_License2"} More_License2
+33 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]3[,]attach/ceshi/4.jpg[,]20180203[,][;]3[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 4, "p_userid": 348, "sign": "d723ec8406ccc14f711bfac13196c205"} {"errorMessage":"è¯·ä¸è¦éå¤ä¸ä¼ ç»ç»æºæä»£ç è¯å¤å°ä»¶!","errorCode":"P_Merchant__EditStep2|More_License3"} More_License3
+34 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]5[,]attach/ceshi/4.jpg[,]20180203[,][;]5[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 4, "p_userid": 348, "sign": "edd37e553d6e3ba80b970123e45cd15a"} {"errorMessage":"è¯·ä¸è¦éå¤ä¸ä¼ åæ æ³¨åè¯å¤å°ä»¶!","errorCode":"P_Merchant__EditStep2|More_License5"} More_License5
+35 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]6[,]attach/ceshi/4.jpg[,]20180203[,][;]6[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 4, "p_userid": 348, "sign": "908c892f7a9dc7362281f02baf7e01ad"} {} {}
+36 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]7[,]attach/ceshi/4.jpg[,]20180203[,][;]7[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 4, "p_userid": 348, "sign": "27123a85ccd50f57fbab86ced66dbc00"} {} {}
+37 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/4.jpg[,]20180203[,][;]3[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]5[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 5, "p_userid": 348, "sign": "891d74c7d2771b626619d90c2545a544"} {} {}
+38 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/4.jpg[,]20180203[,][;]3[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]5[,]attach/ceshi/4.jpg[,]20180203[,][;]6[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 6, "p_userid": 348, "sign": "9476f8b66ef055edd3451b3b0b606ceb"} {} {}
+39 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/4.jpg[,]20180203[,][;]7[,]attach/ceshi/4.jpg[,]20180203[,][;]3[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]5[,]attach/ceshi/4.jpg[,]20180203[,][;]6[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 7, "p_userid": 348, "sign": "9128e205d1ece08867ebcc91098abd1a"} {} {}
+40 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/4.jpg[,]20180203[,][;]8[,]attach/ceshi/4.jpg[,]20180203[,][;]7[,]attach/ceshi/4.jpg[,]20180203[,][;]3[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]5[,]attach/ceshi/4.jpg[,]20180203[,][;]6[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 8, "p_userid": 348, "sign": "3191ee3efa3b7aee09c7eed29515499e"} {"errorMessage":"ä¸ä¼ çè¯ä»¶ç±»åæªå®ä¹!","errorCode":"P_Merchant__EditStep2|More_Licenseid"} More_Licenseid
+41 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/4.jpg[,]20180203[,][;]8[,]attach/ceshi/4.jpg[,]20180203[,][;]8[,]attach/ceshi/4.jpg[,]20180203[,][;]7[,]attach/ceshi/4.jpg[,]20180203[,][;]3[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]5[,]attach/ceshi/4.jpg[,]20180203[,][;]6[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 9, "p_userid": 348, "sign": "c8059aabf82e4efdcf501fcdea9cfe09"} {"errorMessage":"ä¸ä¼ çè¯ä»¶ç±»åæªå®ä¹!","errorCode":"P_Merchant__EditStep2|More_Licenseid"} More_Licenseid
+42 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]2018-01-02[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 348, "sign": "88a40feab744dab2777f04332118627b"} {"errorMessage":"è¯·æ£æ¥æ¥æï¼","errorCode":"P_Merchant__EditStep2|Wrong_Date"} Wrong_Date
+43 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]2018/01/02[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 348, "sign": "3d419c6addc7155ece333253c27852af"} {"errorMessage":"è¯·æ£æ¥æ¥æï¼","errorCode":"P_Merchant__EditStep2|Wrong_Date"} Wrong_Date
+44 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]sdsd[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 348, "sign": "909f292f716a773ff45cf0ca7ca7fa5a"} {"errorMessage":"è¯·æ£æ¥æ¥æï¼","errorCode":"P_Merchant__EditStep2|Wrong_Date"} Wrong_Date
+45 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]00001111[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 348, "sign": "94c6cc4cb01049f4021c663fe9b07d99"} {"errorMessage":"è¯·æ£æ¥æ¥æï¼","errorCode":"P_Merchant__EditStep2|Wrong_Date"} Wrong_Date
+46 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 348, "sign": "5887d534b8364b98ffc3de0c48e6156c"} {"errorMessage":"è¯·æ£æ¥ä¸ä¼ éä»¶æ ¼å¼ï¼","errorCode":"P_Merchant__EditStep2|attachindex&lt;3"} attachindex&lt;3
+47 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]2[,]attach/ceshi/4.jpg[,][,][;]", "p_attachcount": 3, "p_userid": 348, "sign": "59dff9cae7d9492cc0494fbee4067c0a"} {"errorMessage":"è¯·ä¸ä¼ å¿è¦çç§çæä»¶!","errorCode":"P_Merchant__EditStep2|No_Url"} No_Url
+48 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]3[,]attach/ceshi/4.jpg[,][,][;]", "p_attachcount": 3, "p_userid": 348, "sign": "b32ecee472cfdf2902d6c959eefed18b"} {"errorMessage":"è¯·ä¸ä¼ å¿è¦çç§çæä»¶!","errorCode":"P_Merchant__EditStep2|No_Url"} No_Url
+49 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]5[,]attach/ceshi/4.jpg[,][,][;]", "p_attachcount": 3, "p_userid": 348, "sign": "baf78f3f5bc6c41c93fc342b8e6cf72e"} {"errorMessage":"è¯·ä¸ä¼ å¿è¦çç§çæä»¶!","errorCode":"P_Merchant__EditStep2|No_Url"} No_Url
+50 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]6[,]attach/ceshi/4.jpg[,][,][;]", "p_attachcount": 3, "p_userid": 348, "sign": "6f28792e695155d1f22fd14984a2516e"} {"errorMessage":"è¯·ä¸ä¼ å¿è¦çç§çæä»¶!","errorCode":"P_Merchant__EditStep2|No_Url"} No_Url
+51 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]3[,][,]attach/ceshi/4.jpg[,][;]", "p_attachcount": 3, "p_userid": 348, "sign": "d1272d697d41946c497f1ba8fdf8e039"} {"errorMessage":"è¯·ä¸ä¼ å¿è¦çç§çæä»¶!","errorCode":"P_Merchant__EditStep2|No_Url"} No_Url
+52 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20150505[,][;]4[,]attach/ceshi/4.jpg[,][,][;]", "p_attachcount": 2, "p_userid": 348, "sign": "2c7b7a96635236b88a5c5b7caf6b76a2"} {"errorMessage":"è¯·ä¸ä¼ å¿è¦çç§çæä»¶!","errorCode":"P_Merchant__EditStep2|No_Url"} No_Url
+53 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20150505[,][;]4[,]attach/ceshi/4.jpg[,]20111111[,][;][,]attach/ceshi/4.jpg[,]20111111[,][;]", "p_attachcount": 2, "p_userid": 348, "sign": "c7eae34ebdd2681fc26c72e75b6bb5e7"} {"errorMessage":"è¯·ä¸ä¼ å¿è¦çç§çæä»¶!","errorCode":"P_Merchant__EditStep2|No_Url"} No_Url
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>KWD.framework.testapi.case.test_addstep3.TestAddStep3</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c10',1)">Detail</a></td>
+</tr>
+
+<tr id='pt10.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_addstep3</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt10.1')" >
+        pass</a>
+
+    <div id='div_pt10.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt10.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt10.1: 15173351060
+{'p_username': '15173351060', 'p_password': 'beba1c90d21e86efb01b7996a720cbaae7982aad', 'p_mobile': '15173351060', 'sign': '49edcd56168bdad7f147ca1244692bb4'}
+{"p_referrer": 0, "p_adress": "ycFrZpb5n8tMU0O", "p_enterpriseCode": "ycFrZpb5n8tMU0O", "sign": "fa48a676139f4439a0a1894bef63ff14", "p_locationid": "110101", "p_contacterEmail": "", "p_userid": 349, "p_contacter": "ycFrZpb5n8tMU0O", "p_manageType": "ycFrZpb5n8tMU0O", "p_contacterMobile": "13960238175", "p_enterpriseName": "ycFrZpb5n8tMU0O"}
+{"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/4.jpg[,]20180203[,][;]3[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]5[,]attach/ceshi/4.jpg[,]20180203[,][;]6[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 6, "p_userid": 349, "sign": "ed9dc2791468ae84944877272da924f3"}
+{"p_userid": 349, "sign": "f409aceb21092579b3c3a02ac0b94c2c"}
+{"p_opid": 1, "p_merchantid": 325, "p_status": 5, "sign": "41b5c655672d49f7cb9d25438a482fa8", "p_approvememo": "aR3lMJ60CI8g19A"}
+{"p_userid": 349, "sign": "f409aceb21092579b3c3a02ac0b94c2c"}
+{"p_userid": 349, "sign": "f409aceb21092579b3c3a02ac0b94c2c"}
+{"p_opid": 1, "p_merchantid": 325, "p_status": 5, "sign": "7f35afe65612d6965587e7192555348e", "p_approvememo": "el26RdzO4fAcM5N"}
+{"p_userid": 349, "sign": "f409aceb21092579b3c3a02ac0b94c2c"}
+{"p_userid": 349, "sign": "f409aceb21092579b3c3a02ac0b94c2c"}
+{"p_userid": 349, "sign": "f409aceb21092579b3c3a02ac0b94c2c"}
+{"p_userid": 349, "sign": "f409aceb21092579b3c3a02ac0b94c2c"}
+{"p_opid": 1, "p_merchantid": 325, "p_status": 5, "sign": "9549dc22a2c6d84b5d82759f9e559485", "p_approvememo": "8h2cd9pI0iKvuqG"}
+{"p_userid": 349, "sign": "f409aceb21092579b3c3a02ac0b94c2c"}
+{"p_opid": 1, "p_merchantid": 325, "p_status": 5, "sign": "bfe055b89afdc794a53f00ba12d26976", "p_approvememo": "5NOCBEkAmoZ9Fd3"}
+{"p_userid": 349, "sign": "f409aceb21092579b3c3a02ac0b94c2c"}
+{"p_userid": 349, "sign": "f409aceb21092579b3c3a02ac0b94c2c"}
+{"p_userid": 349, "sign": "f409aceb21092579b3c3a02ac0b94c2c"}
+{"p_opid": 1, "p_merchantid": 325, "p_status": 5, "sign": "5a4e7dee68cfadeba23ed2cf5055180f", "p_approvememo": "UPITdOXWD75Sur9"}
+{"p_userid": 349, "sign": "f409aceb21092579b3c3a02ac0b94c2c"}
+{"p_opid": 1, "p_merchantid": 325, "p_status": 5, "sign": "c90ec89d4dd474027c35dc5aac490454", "p_approvememo": "A2jgO4edvPLSzYJ"}
+{"p_userid": 349, "sign": "f409aceb21092579b3c3a02ac0b94c2c"}
+{"p_userid": 349, "sign": "f409aceb21092579b3c3a02ac0b94c2c"}
+{"p_userid": 349, "sign": "f409aceb21092579b3c3a02ac0b94c2c"}
+{"p_userid": 349, "sign": "f409aceb21092579b3c3a02ac0b94c2c"}
+{"p_userid": 349, "sign": "f409aceb21092579b3c3a02ac0b94c2c"}
+{"p_userid": 349, "sign": "f409aceb21092579b3c3a02ac0b94c2c"}
+{"p_userid": 349, "sign": "f409aceb21092579b3c3a02ac0b94c2c"}
+{"p_userid": 349, "sign": "f409aceb21092579b3c3a02ac0b94c2c"}
+{"p_userid": 349, "sign": "f409aceb21092579b3c3a02ac0b94c2c"}
+{"p_userid": 349, "sign": "f409aceb21092579b3c3a02ac0b94c2c"}
+1 {"p_userid": 349, "p_foundedtime": "", "p_offlineinfo": "", "sign": "a4b8ee5a137c4f0a48689f29dd14b2d3", "p_brand": "", "p_yearSalerroom": "", "p_ecinfo": "", "p_registeredcapital": ""} {} {}
+2 {"p_userid": 349, "p_foundedtime": "1", "p_offlineinfo": "1", "sign": "d4437c4f0ee1db4b542626828b13047c", "p_brand": "1", "p_yearSalerroom": "1", "p_ecinfo": "1", "p_registeredcapital": "1"} {"errorMessage":"æ¥ææ ¼å¼éè¯¯","errorCode":"Parameter|DateFormatInvalid"} DateFormatInvalid
+3 {"p_userid": 349, "p_foundedtime": "", "p_offlineinfo": "1", "sign": "b62e58113261d10b66675a18675c1135", "p_brand": "1", "p_yearSalerroom": "1", "p_ecinfo": "1", "p_registeredcapital": "1"} {} {}
+4 {"p_userid": 349, "p_foundedtime": " ", "p_offlineinfo": "1", "sign": "b62e58113261d10b66675a18675c1135", "p_brand": "1", "p_yearSalerroom": "1", "p_ecinfo": "1", "p_registeredcapital": "1"} {"errorMessage":"æ¥ææ ¼å¼éè¯¯","errorCode":"Parameter|DateFormatInvalid"} DateFormatInvalid
+5 {"p_userid": 349, "p_foundedtime": null, "p_offlineinfo": "1", "sign": "61b66427ed35d8dbe59266fa89513ec7", "p_brand": "1", "p_yearSalerroom": "1", "p_ecinfo": "1", "p_registeredcapital": "1"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+6 {"p_userid": 349, "p_foundedtime": "qq", "p_offlineinfo": "1", "sign": "4c92bb822a63fb2973db5ce124821585", "p_brand": "1", "p_yearSalerroom": "1", "p_ecinfo": "1", "p_registeredcapital": "1"} {"errorMessage":"æ¥ææ ¼å¼éè¯¯","errorCode":"Parameter|DateFormatInvalid"} DateFormatInvalid
+7 {"p_userid": 349, "p_foundedtime": "20111111", "p_offlineinfo": "1", "sign": "b7c9d897bf58c89048ce808162a3a6ed", "p_brand": "1", "p_yearSalerroom": "1", "p_ecinfo": "1", "p_registeredcapital": "1"} {} {}
+8 {"p_userid": 349, "p_foundedtime": "2013-12-13", "p_offlineinfo": "1", "sign": "2543af2a4eaf48aeae6fead953f86fc3", "p_brand": "1", "p_yearSalerroom": "1", "p_ecinfo": "1", "p_registeredcapital": "1"} {} {}
+9 {"p_userid": 349, "p_foundedtime": "2222/11/11", "p_offlineinfo": "1", "sign": "f6e4e896bb692393c01b2738cd3cfaa3", "p_brand": "1", "p_yearSalerroom": "1", "p_ecinfo": "1", "p_registeredcapital": "1"} {"errorMessage":"æ¥ææ ¼å¼éè¯¯","errorCode":"Parameter|DateFormatInvalid"} DateFormatInvalid
+10 {"p_userid": 349, "p_foundedtime": "20160204", "p_offlineinfo": null, "sign": "d1fea1a92987873fc48d8c09cc20d312", "p_brand": null, "p_yearSalerroom": "10000000000000", "p_ecinfo": null, "p_registeredcapital": "10000000000000"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+11 {"p_userid": 349, "p_foundedtime": "20160205", "p_offlineinfo": "\u7ebf\u4e0b\u7f51\u70b9", "sign": "1f436789b93302402774a40e109439cc", "p_brand": "\u8010\u514b", "p_yearSalerroom": "\u4e00\u4e07\u4ebf", "p_ecinfo": "\u6709\u7535\u5546", "p_registeredcapital": "\u4e00\u5343\u4ebf"} {} {}
+12 {"p_userid": 349, "p_foundedtime": "20160206", "p_offlineinfo": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "sign": "b0c6895dce93ce5c9dff1fae3c0257db", "p_brand": "2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222", "p_yearSalerroom": "222222222222222222222222222222", "p_ecinfo": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "p_registeredcapital": "222222222222222222222222222222"} {} {}
+13 {"p_userid": 349, "p_foundedtime": "20160207", "p_offlineinfo": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "sign": "8c34afe93daa40681defdf48a8397031", "p_brand": "2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222", "p_yearSalerroom": "222222222222222222222222222222", "p_ecinfo": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "p_registeredcapital": "2222222122222222222222222222222"} {"errorMessage":"åæ°é¿åº¦æ£æ¥å¤±è´¥","errorCode":"Parameter|LengthInvalid"} LengthInvalid
+14 {"p_userid": 349, "p_foundedtime": "20160208", "p_offlineinfo": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "sign": "1b810448c002fdf310cda09896220772", "p_brand": "2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222", "p_yearSalerroom": "2222221222222222222222222222222", "p_ecinfo": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "p_registeredcapital": "222222222222222222222222222222"} {"errorMessage":"åæ°é¿åº¦æ£æ¥å¤±è´¥","errorCode":"Parameter|LengthInvalid"} LengthInvalid
+15 {"p_userid": 349, "p_foundedtime": "20160209", "p_offlineinfo": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "sign": "e321d6c2397a417ee57560231d6c3773", "p_brand": "21222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222", "p_yearSalerroom": "222222222222222222222222222222", "p_ecinfo": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "p_registeredcapital": "222222222222222222222222222222"} {"errorMessage":"åæ°é¿åº¦æ£æ¥å¤±è´¥","errorCode":"Parameter|LengthInvalid"} LengthInvalid
+16 {"p_userid": 349, "p_foundedtime": "20160210", "p_offlineinfo": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "sign": "795a2eac8044a9a00a351a842adafb43", "p_brand": "2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222", "p_yearSalerroom": "222222222222222222222222222222", "p_ecinfo": "eeee1eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "p_registeredcapital": "222222222222222222222222222222"} {"errorMessage":"åæ°é¿åº¦æ£æ¥å¤±è´¥","errorCode":"Parameter|LengthInvalid"} LengthInvalid
+17 {"p_userid": 349, "p_foundedtime": "20160211", "p_offlineinfo": "eeeeeee1eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "sign": "051c364257fe92438d8f9f99ecbe53b0", "p_brand": "2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222", "p_yearSalerroom": "222222222222222222222222222222", "p_ecinfo": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "p_registeredcapital": "222222222222222222222222222222"} {"errorMessage":"åæ°é¿åº¦æ£æ¥å¤±è´¥","errorCode":"Parameter|LengthInvalid"} LengthInvalid
+18 {"p_userid": 349, "p_foundedtime": "20160207", "p_offlineinfo": "1", "sign": "b497a688984eec56fb77b801e9f8a84d", "p_brand": "1", "p_yearSalerroom": "1", "p_ecinfo": "1", "p_registeredcapital": "\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57"} {"errorMessage":"æªç¥éè¯¯","errorCode":"UnknownError"} UnknownError
+19 {"p_userid": 349, "p_foundedtime": "20160208", "p_offlineinfo": "1", "sign": "680b9ea1f72a871ca196e75ec0706349", "p_brand": "1", "p_yearSalerroom": "\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57", "p_ecinfo": "1", "p_registeredcapital": "1"} {"errorMessage":"æªç¥éè¯¯","errorCode":"UnknownError"} UnknownError
+20 {"p_userid": 349, "p_foundedtime": "20160209", "p_offlineinfo": "1", "sign": "4bdc76775cd1d8c8c995b1edc04c9d5a", "p_brand": "\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57", "p_yearSalerroom": "1", "p_ecinfo": "1", "p_registeredcapital": "1"} {"errorMessage":"æªç¥éè¯¯","errorCode":"UnknownError"} UnknownError
+21 {"p_userid": 349, "p_foundedtime": "20160210", "p_offlineinfo": "1", "sign": "b4bf0a1954bc55a9984ed747e7d9eb82", "p_brand": "1", "p_yearSalerroom": "1", "p_ecinfo": "\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57", "p_registeredcapital": "1"} {"errorMessage":"æªç¥éè¯¯","errorCode":"UnknownError"} UnknownError
+22 {"p_userid": 349, "p_foundedtime": "20160211", "p_offlineinfo": "\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57", "sign": "492fa702b61e35427517407c42b12115", "p_brand": "1", "p_yearSalerroom": "1", "p_ecinfo": "1", "p_registeredcapital": "1"} {"errorMessage":"æªç¥éè¯¯","errorCode":"UnknownError"} UnknownError
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>KWD.framework.testapi.case.test_adduser.TestAddUser</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c11',1)">Detail</a></td>
+</tr>
+
+<tr id='ft11.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_adduser</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft11.1')" >
+        fail</a>
+
+    <div id='div_ft11.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft11.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft11.1: 1 {"p_username": "13333333333", "p_password": "302d9caacf792368848fe6472e4a626aae61d25e", "p_mobile": "13333333333", "sign": "2ff9315df46bb126d25882eac12a1c2b"} {"errorMessage":"ææºå·å·²å­å¨ï¼","errorCode":"P_User__AddUser|Mobile_Exist"} Mobile_Exist
+2 {"p_username": "15000000000", "p_password": "48d98cb0420fc2ec8c0f7a670bd61ae52f80186c", "p_mobile": "15000000000", "sign": "ce795297034f33fa9d9af561e94ed199"} {"p_userid":350} Mobile_Exist
+Traceback (most recent call last):
+  File "D:\Keyworddriven\KWD\framework\testapi\case\test_adduser.py", line 16, in test_adduser
+    self.assertIn(case['code'], case['response'])
+AssertionError: 'Mobile_Exist' not found in '{"p_userid":350}'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>KWD.framework.testapi.case.test_bind.TestBind</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c12',1)">Detail</a></td>
+</tr>
+
+<tr id='pt12.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_bind</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt12.1')" >
+        pass</a>
+
+    <div id='div_pt12.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt12.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt12.1: 13973408149
+{'p_username': '13973408149', 'p_password': 'f6a212432cf26147217500083dd7a180e33bd9e4', 'p_mobile': '13973408149', 'sign': 'fd659b52ce4af4f13304091f5b6742e5'}
+{"p_referrer": 0, "p_adress": "MnXfG8B14ECFiHT", "p_enterpriseCode": "MnXfG8B14ECFiHT", "sign": "4b299afa716c181145d9af83bd070a31", "p_locationid": "110101", "p_contacterEmail": "", "p_userid": 355, "p_contacter": "MnXfG8B14ECFiHT", "p_manageType": "MnXfG8B14ECFiHT", "p_contacterMobile": "15855279439", "p_enterpriseName": "MnXfG8B14ECFiHT"}
+{"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/4.jpg[,]20180203[,][;]3[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]5[,]attach/ceshi/4.jpg[,]20180203[,][;]6[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 6, "p_userid": 355, "sign": "829c75c271f504f364ab5bbab1f2e921"}
+{"p_userid": 355, "p_foundedtime": "20111111", "p_offlineinfo": "", "sign": "a1a26f456a70a3598889176187ab6a68", "p_brand": "", "p_yearSalerroom": "", "p_ecinfo": "", "p_registeredcapital": ""}
+{"p_opid": 1, "p_merchantid": 326, "p_status": 4, "sign": "ff4d26e9a6731612fc4f3f8dd710469e", "p_approvememo": "cUYbDmLqi74wkCR"}
+1 {"user_id": 355, "BEST_password": "d41d8cd98f00b204e9800998ecf8427e", "user_type": "2", "id_code": "", "sign": "628fad0c9b27aa3871d72575e2f378e4", "BEST_user_id": "", "user_name": ""} {"errorMessage":"çµåç¨æ·åç¼ºå¤±","errorCode":"BEST|USER_NAME_LOSS"} USER_NAME_LOSS
+2 {"user_id": 355, "BEST_password": "330277c55fb5dc9147ff92b678251913", "user_type": "2", "id_code": "100000221", "sign": "1e83ed40fe3a43facbeec69a50967447", "BEST_user_id": "100000221", "user_name": ""} {"errorMessage":"çµåç¨æ·åç¼ºå¤±","errorCode":"BEST|USER_NAME_LOSS"} USER_NAME_LOSS
+3 {"user_id": 355, "BEST_password": "330277c55fb5dc9147ff92b678251913", "user_type": "2", "id_code": "100000221", "sign": "1e83ed40fe3a43facbeec69a50967447", "BEST_user_id": "100000221", "user_name": " "} {"errorMessage":"çµåç¨æ·åç¼ºå¤±","errorCode":"BEST|USER_NAME_LOSS"} USER_NAME_LOSS
+4 {"user_id": 355, "BEST_password": "330277c55fb5dc9147ff92b678251913", "user_type": "2", "id_code": "100000221", "sign": "560c51fc383ddc0b4e52e1ecbc9d814d", "BEST_user_id": "100000221", "user_name": null} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+5 {"user_id": 355, "BEST_password": "330277c55fb5dc9147ff92b678251913", "user_type": "2", "id_code": "", "sign": "b1ee665a678975c3da7c3bd3c7d8a0e8", "BEST_user_id": "100000221", "user_name": "13691466408"} {"errorMessage":"çµåç¨æ·èº«ä»½è¯å·æç»ç»æºæä»£ç ç¼ºå¤±","errorCode":"BEST|ID_CODE_LOSS"} ID_CODE_LOSS
+6 {"user_id": 355, "BEST_password": "96e79218965eb72c92a549dd5a330112", "user_type": "2", "id_code": "100000221", "sign": "e98a04b92f026a138ecdec7c04875bbe", "BEST_user_id": "", "user_name": "13691466408"} {"errorMessage":"BESTç¨æ·idç¼ºå¤±","errorCode":"BEST|BEST_USER_ID_LOSS"} BEST_USER_ID_LOSS
+7 {"user_id": 355, "BEST_password": "17d44cff686695e9302869ddb9e605fa", "user_type": "2", "id_code": "100000221", "sign": "6d1606e16ef91add70a3a2c4a229f60d", "BEST_user_id": "100000221", "user_name": "13691466408"} {"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"} BEST_USER_OR_PWD_INVALID
+8 {"user_id": 355, "BEST_password": "330277c55fb5dc9147ff92b678251913", "user_type": "2", "id_code": " ", "sign": "b1ee665a678975c3da7c3bd3c7d8a0e8", "BEST_user_id": "100000221", "user_name": "13691466408"} {"errorMessage":"çµåç¨æ·èº«ä»½è¯å·æç»ç»æºæä»£ç ç¼ºå¤±","errorCode":"BEST|ID_CODE_LOSS"} ID_CODE_LOSS
+9 {"user_id": 355, "BEST_password": "e7a9912201143b4731f12245f810c3da", "user_type": "2", "id_code": "100000221", "sign": "4048781e356b1fdc5685c8514af55bda", "BEST_user_id": " ", "user_name": "13691466408"} {"errorMessage":"BESTç¨æ·idç¼ºå¤±","errorCode":"BEST|BEST_USER_ID_LOSS"} BEST_USER_ID_LOSS
+10 {"user_id": 355, "BEST_password": "33b373c0e28f710e08d2c41edbb76189", "user_type": "2", "id_code": "100000221", "sign": "2fda6bd3a2ff734f181d52f8082cfc1e", "BEST_user_id": "100000221", "user_name": "13691466408"} {"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"} BEST_USER_OR_PWD_INVALID
+11 {"user_id": 355, "BEST_password": "330277c55fb5dc9147ff92b678251913", "user_type": "2", "id_code": null, "sign": "b9f3fb822892462e39514e6c194fc930", "BEST_user_id": "100000221", "user_name": "13691466408"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+12 {"user_id": 355, "BEST_password": "a0ceaf69836ac6a4a45276b5e62f01ae", "user_type": "2", "id_code": "100000221", "sign": "b9ea118e30b4382c15a950876961583b", "BEST_user_id": null, "user_name": "13691466408"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+13 {"user_id": 355, "BEST_password": null, "user_type": "2", "id_code": "100000221", "sign": "d20515330454108180488296d678fea6", "BEST_user_id": "100000221", "user_name": "13691466408"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+14 {"user_id": 355, "BEST_password": "d4c43f2fdd8e4e1ccf892a9296f75103", "user_type": "2", "id_code": "100000221", "sign": "b86e0d60fadba58d0bd23e74a7262494", "BEST_user_id": "100000222", "user_name": "13691466408"} {"errorMessage":"ç¨æ·èº«ä»½è¯å·æç»ç»æºæä»£ç ä¸ä¸è´","errorCode":"BEST|ID_CODE_INCONSISTENT"} ID_CODE_INCONSISTENT
+15 {"user_id": 355, "BEST_password": "44a5cc673e29bb67e5933e6ddb8d9502", "user_type": "2", "id_code": "qqqq", "sign": "fcc0cebdd36b4ddb37e050a7129e226a", "BEST_user_id": "qqqq", "user_name": "13691466408"} {"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"} BEST_USER_OR_PWD_INVALID
+16 {"user_id": 355, "BEST_password": "ece3e2ea62029911e08a96aa70dff13c", "user_type": "2", "id_code": "\u53f8\u6cd5", "sign": "0017bc639632e835a01ed703ccddb422", "BEST_user_id": "\u53f8\u6cd5", "user_name": "13691466408"} {"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"} BEST_USER_OR_PWD_INVALID
+17 {"user_id": 355, "BEST_password": "f4185271955edaad1c0688ab09ca4acf", "user_type": "2", "id_code": "100000221", "sign": "3a83a91d97d04217357105177f7ab3f1", "BEST_user_id": "100000221", "user_name": "13691466408"} {"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"} BEST_USER_OR_PWD_INVALID
+18 {"user_id": "", "BEST_password": "330277c55fb5dc9147ff92b678251913", "user_type": "2", "id_code": "100000221", "sign": "98e168386eb33d3cf309d6cac9c31947", "BEST_user_id": "100000221", "user_name": "13691466408"} {"errorMessage":"æªç¥éè¯¯","errorCode":"UnknownError"} UnknownError
+19 {"user_id": null, "BEST_password": "330277c55fb5dc9147ff92b678251913", "user_type": "2", "id_code": "100000221", "sign": "0b0a80137499f8748e3fdda259814ab5", "BEST_user_id": "100000221", "user_name": "13691466408"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+20 {"user_id": 355, "BEST_password": "fdd2a33d3dc9017d4cf9a0295879ed09", "user_type": "2", "id_code": "100000234", "sign": "aa75dc501ca689c09f564701790ae98c", "BEST_user_id": "100000234", "user_name": "13691466408"} {"errorMessage":"BESTè´¦å·å·²ç»ä¸å¶ä»çµåè´¦å·ç»å®","errorCode":"BEST|BEST_USER_BIND_OTHER_USER"} BEST_USER_BIND_OTHER_USER
+21 {"user_id": 355, "BEST_password": "7c4e4b664bc2878c46b7bb104d5e42a0", "user_type": "2", "id_code": "100000258", "sign": "6360c6e7c2cea325a1f4e7bf92ce7d8b", "BEST_user_id": "100000258", "user_name": "www"} {} {}
+{"BEST_user_id": "100000258", "BEST_password": "7c4e4b664bc2878c46b7bb104d5e42a0", "user_id": 355, "sign": "fdc3dfb789323a5b66de8c2ce3ec8fb1"}
+22 {"user_id": 355, "BEST_password": "330277c55fb5dc9147ff92b678251913", "user_type": "2", "id_code": "100000221", "sign": "61b6c15808d525262e3a4c2cbb548223", "BEST_user_id": "100000221", "user_name": "xczv\u4e2dvnet.cn"} {"errorMessage":"çµåè´¦å·åBESTè´¦å·å·²ç»ç»å®","errorCode":"BEST|USER_BIND_BEST_USER"} USER_BIND_BEST_USER
+23 {"user_id": 355, "BEST_password": "330277c55fb5dc9147ff92b678251913", "user_type": "2", "id_code": "100000221", "sign": "80b0d7f373bb9c72db5ffa9e53afe32e", "BEST_user_id": "100000221", "user_name": "13691466409"} {"errorMessage":"çµåè´¦å·åBESTè´¦å·å·²ç»ç»å®","errorCode":"BEST|USER_BIND_BEST_USER"} USER_BIND_BEST_USER
+24 {"user_id": 355, "BEST_password": "330277c55fb5dc9147ff92b678251913", "user_type": "2", "id_code": "100000221", "sign": "314d39d5b7306eb59a9218ea81a455e8", "BEST_user_id": "100000221", "user_name": "13691466408"} {"errorMessage":"çµåè´¦å·åBESTè´¦å·å·²ç»ç»å®","errorCode":"BEST|USER_BIND_BEST_USER"} USER_BIND_BEST_USER
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>KWD.framework.testapi.case.test_openshop.TestOpenShop</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c13',1)">Detail</a></td>
+</tr>
+
+<tr id='pt13.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_openshop</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt13.1')" >
+        pass</a>
+
+    <div id='div_pt13.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt13.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt13.1: 13696603197
+{'p_username': '13696603197', 'p_password': '39906a25f3fcdea6adeba883c6070e4676548953', 'p_mobile': '13696603197', 'sign': 'afbbf52246ab03ac11996d10ffc6322c'}
+{"p_referrer": 0, "p_adress": "J2Hg7G0pK5RqcYF", "p_enterpriseCode": "J2Hg7G0pK5RqcYF", "sign": "0045f4c8f5772143ce5f8771e29bc27d", "p_locationid": "110101", "p_contacterEmail": "", "p_userid": 356, "p_contacter": "J2Hg7G0pK5RqcYF", "p_manageType": "J2Hg7G0pK5RqcYF", "p_contacterMobile": "15883802248", "p_enterpriseName": "J2Hg7G0pK5RqcYF"}
+{"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/4.jpg[,]20180203[,][;]3[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]5[,]attach/ceshi/4.jpg[,]20180203[,][;]6[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 6, "p_userid": 356, "sign": "1dbf315cfb575e367fff888f2b18c399"}
+{"p_userid": 356, "p_foundedtime": "20111111", "p_offlineinfo": "", "sign": "1a463ed60915acc238ead4d65d73edde", "p_brand": "", "p_yearSalerroom": "", "p_ecinfo": "", "p_registeredcapital": ""}
+{"p_opid": 1, "p_merchantid": 327, "p_status": 4, "sign": "09d1c07b647b3758d10496be4cab4559", "p_approvememo": "UiOq26ACBgXb7y8"}
+{"user_id": 356, "BEST_password": "d72a020969b7219b3b498766ba850b19", "user_type": "2", "id_code": "100000516", "sign": "183c515c305635dead994965a255e40b", "BEST_user_id": "100000516", "user_name": "SewcpMjkz6iUR3m"}
+{"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"}
+{"user_id": 356, "BEST_password": "dcf94d4f107a1c412f09e44181193c67", "user_type": "2", "id_code": "100000638", "sign": "0fe9a9386a27b3d5ea270535888daaa4", "BEST_user_id": "100000638", "user_name": "W1FjBRh9JVvqxAl"}
+{}
+1 {"p_shopname": "", "p_userid": 356, "sign": "e3d0e324cea93cb4ee7ec9ad5a0b0df2"} {"errorMessage":"åºéºåç§°ä¸è½ä¸ºç©ºï¼","errorCode":"P_Merchant__OpenShop|No_Shopname"} No_Shopname
+2 {"p_shopname": null, "p_userid": 356, "sign": "fad59ff23bf4692e916c5c0f9157d2ad"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+3 {"p_shopname": " ", "p_userid": 356, "sign": "e3d0e324cea93cb4ee7ec9ad5a0b0df2"} {"errorMessage":"åºéºåç§°ä¸è½ä¸ºç©ºï¼","errorCode":"P_Merchant__OpenShop|No_Shopname"} No_Shopname
+4 {"p_shopname": "11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111", "p_userid": 356, "sign": "a5c60d356cb6a040836bfc0a37ce33ff"} {"errorMessage":"åæ°é¿åº¦æ£æ¥å¤±è´¥","errorCode":"Parameter|LengthInvalid"} LengthInvalid
+5 {"p_shopname": "1111111115511111111111111111111111111111111111111111111111111111111111111111111111111111111111111111", "p_userid": 356, "sign": "4638132fdd2bb2e45f1e5c93f527003c"} {"errorMessage":"åºéºåç§°å·²è¢«ä½¿ç¨ï¼","errorCode":"P_Merchant__OpenShop|ShopName_Exist"} ShopName_Exist
+6 {"p_shopname": "\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57", "p_userid": 356, "sign": "2be7d4b6e1361be09bc5b56565464c57"} {"errorMessage":"æªç¥éè¯¯","errorCode":"UnknownError"} UnknownError
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>KWD.framework.testapi.case.test_unbind.TestUnBind</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c14',1)">Detail</a></td>
+</tr>
+
+<tr id='pt14.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_unbind</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt14.1')" >
+        pass</a>
+
+    <div id='div_pt14.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt14.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt14.1: 13923473562
+{'p_username': '13923473562', 'p_password': 'ec57df13dae8a6aef66bf691720d4e2f7b2f025c', 'p_mobile': '13923473562', 'sign': '3e1f8b55f2e6fcad20c77fc2c3048a54'}
+{"p_referrer": 0, "p_adress": "p0ldzve7ISc6fbY", "p_enterpriseCode": "p0ldzve7ISc6fbY", "sign": "dc150ccc4a8fb03c0568a46269c20f0f", "p_locationid": "110101", "p_contacterEmail": "", "p_userid": 357, "p_contacter": "p0ldzve7ISc6fbY", "p_manageType": "p0ldzve7ISc6fbY", "p_contacterMobile": "15897110521", "p_enterpriseName": "p0ldzve7ISc6fbY"}
+{"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/4.jpg[,]20180203[,][;]3[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]5[,]attach/ceshi/4.jpg[,]20180203[,][;]6[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 6, "p_userid": 357, "sign": "2486ee2bacb643397a22b1b3cd289939"}
+{"p_userid": 357, "p_foundedtime": "20111111", "p_offlineinfo": "", "sign": "ffd47f2b55032106ff42396024f9e8a1", "p_brand": "", "p_yearSalerroom": "", "p_ecinfo": "", "p_registeredcapital": ""}
+{"p_opid": 1, "p_merchantid": 328, "p_status": 4, "sign": "f3ea83d655c253d7489bcaea8b43793d", "p_approvememo": "FMkd3lcGfED2rnb"}
+{"user_id": 357, "BEST_password": "82e975eafef5ae9714c3fd0ca2839eeb", "user_type": "2", "id_code": "100000609", "sign": "33516260f33e6924422b78bb2623a51d", "BEST_user_id": "100000609", "user_name": "vdBw3Izf2blLn8D"}
+{}
+1 {"user_id": 357, "BEST_password": "d41d8cd98f00b204e9800998ecf8427e", "BEST_user_id": "", "sign": "f2b2f65bbe0e1a4559d3e671c26c90a5"} {"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"} BEST_USER_OR_PWD_INVALID
+2 {"user_id": 357, "BEST_password": "96e79218965eb72c92a549dd5a330112", "BEST_user_id": "", "sign": "2f5d046cdcff3e0123a9155fb2cf456b"} {"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"} BEST_USER_OR_PWD_INVALID
+3 {"user_id": 357, "BEST_password": "17d44cff686695e9302869ddb9e605fa", "BEST_user_id": "100000221", "sign": "d1fd6195d8fa2d315997f0f11d3ed590"} {"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"} BEST_USER_OR_PWD_INVALID
+4 {"user_id": 357, "BEST_password": "e7a9912201143b4731f12245f810c3da", "BEST_user_id": " ", "sign": "0ab76d892c1811a6f327cb291835c018"} {"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"} BEST_USER_OR_PWD_INVALID
+5 {"user_id": 357, "BEST_password": "33b373c0e28f710e08d2c41edbb76189", "BEST_user_id": "100000221", "sign": "e8f77f54fa0a78abf3050fe7d4703ef0"} {"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"} BEST_USER_OR_PWD_INVALID
+6 {"user_id": 357, "BEST_password": "a0ceaf69836ac6a4a45276b5e62f01ae", "BEST_user_id": null, "sign": "bf89419b8b9443f277f1a0e975792e9c"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+7 {"user_id": 357, "BEST_password": null, "BEST_user_id": "100000221", "sign": "aa919547ae112bd668069c29905d3097"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+8 {"user_id": 357, "BEST_password": "bb01de01b5b58660066fd3b0734a1a27", "BEST_user_id": "qqq", "sign": "8f2173c3b73608e973c0e493727acf13"} {"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"} BEST_USER_OR_PWD_INVALID
+9 {"user_id": 357, "BEST_password": "0f6f95445cd51eb26de52738bb420110", "BEST_user_id": "100000221", "sign": "8fb56e2ec488b162be7652668e41a846"} {"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"} BEST_USER_OR_PWD_INVALID
+10 {"user_id": "", "BEST_password": "330277c55fb5dc9147ff92b678251913", "BEST_user_id": "100000221", "sign": "9c31fd5932a2b89ff9f0acfeb787ab68"} {"errorMessage":"æªç¥éè¯¯","errorCode":"UnknownError"} UnknownError
+11 {"user_id": "29", "BEST_password": "330277c55fb5dc9147ff92b678251913", "BEST_user_id": "100000221", "sign": "80ece52398c1bf84c3289731727aa07b"} {"errorMessage":"BESTè´¦å·æ²¡æç»å®çµåç¨æ·","errorCode":"BEST|BEST_USER_NOT_BIND"} BEST_USER_NOT_BIND
+12 {"user_id": null, "BEST_password": "330277c55fb5dc9147ff92b678251913", "BEST_user_id": "100000221", "sign": "01c413e9f76e19256757463ffe9698fc"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+13 {"user_id": 357, "BEST_password": "330277c55fb5dc9147ff92b678251913", "BEST_user_id": "100000221", "sign": "4fca1e3da38279c63cbac12cfd8e4151"} {"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"} BEST_USER_OR_PWD_INVALID
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>14</td>
+    <td>12</td>
+    <td>2</td>
+    <td>0</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>

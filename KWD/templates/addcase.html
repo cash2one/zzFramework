@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加用例</title>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        #div_login {
+            position:absolute;
+            top:10%;
+            left:10%;
+            right:auto;
+            width: 30%;
+            height: auto;
+{#            margin: -15px 0 0 0;#}
+}
+    </style>
+</head>
+<body>
+<div id="div_login">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title">添加用例</div>
+        </div>
+
+        <div class="panel-body">
+            <form method="post" action="/add_case" class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="casename" class="col-sm-2 control-label">用例名</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="casename"
+                               placeholder="请输入用例名">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="casefile" class="col-sm-2 control-label">用例文件</label>
+                    <div class="col-sm-10">
+                        <input type="file" class="form-control" id="casefile"
+                               placeholder="请选择用例文件">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="excelindex" class="col-sm-2 control-label">用例标签</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="excelindex"
+                               placeholder="请输入Excel内文件标签">
+                    </div>
+                </div>
+                <div align="center">
+                    <button type="submit" class="btn btn-lg btn-default">保存</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="submit" class="btn btn-lg btn-default">返回</button>
+                </div>
+        </form>
+    </div>
+    </div>
+
+</div>
+</body>
+</html>

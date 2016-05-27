@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<urls>
+    <baseurl>http://192.168.7.227:8080/zhigou/</baseurl>
+    <CheckCode>P_Merchant__CheckCode</CheckCode>
+    <CheckName>P_Merchant__CheckName</CheckName>
+    <GetApplyList>P_Merchant__GetApplyList</GetApplyList>
+    <GetMobile>P_User__GetMobile</GetMobile>
+    <GetArea>P_User__GetArea</GetArea>
+    <AddStep1>P_Merchant__AddStep1</AddStep1>
+    <AddStep2>P_Merchant__AddStep2</AddStep2>
+    <AddStep3>P_Merchant__AddStep3</AddStep3>
+    <GetBasicStatus>P_Merchant__GetBasicStatus</GetBasicStatus>
+    <OpenShop>P_Merchant__OpenShop</OpenShop>
+    <AddUser>P_User__AddUser</AddUser>
+    <GetUserPasswordInfo>P_User__GetUserPasswordInfo</GetUserPasswordInfo>
+    <Bind>R_Bind__User</Bind>
+    <UnBind>R_UnBind__User</UnBind>
+    <GetBasicinfo>P_Merchant__GetBasicinfo</GetBasicinfo>
+    <ApproveApply>P_Merchant__ApproveApply</ApproveApply>
+</urls>

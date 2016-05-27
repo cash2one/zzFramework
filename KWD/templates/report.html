@@ -1,0 +1,1006 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>直购2.0 接口测试报告</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.3"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { white-space: pre-wrap;word-wrap: break-word; }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 2ex;
+    margin-bottom: 3ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    /* width: 500px;*/
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 99%;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #74A474; }
+.failClass  { background-color: #FDD283; }
+.errorClass { background-color: #FF6600; }
+.passCase   { color: #6c6; }
+.failCase   { color: #FF6600; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+#div_base {
+            position:absolute;
+            top:0%;
+            left:5%;
+            right:5%;
+            width: auto;
+            height: auto;
+            margin: -15px 0 0 0;
+}
+</style>
+
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+<div id="div_base">
+
+<div class='page-header'>
+<h1>直购2.0 接口测试报告</h1>
+<p class='attribute'><strong>开始时间:</strong> 2016-05-27 11:00:08</p>
+<p class='attribute'><strong>运行时长:</strong> 0:00:18.105000</p>
+<p class='attribute'><strong>状态:</strong> 通过 12 失败 2</p>
+
+</div>
+<p class='description'>测试用例执行情况见下表：</p>
+
+
+
+<div class="btn-group btn-group-sm">
+<button class="btn btn-default" onclick='javascript:showCase(0)'>总结</button>
+<button class="btn btn-default" onclick='javascript:showCase(1)'>失败</button>
+<button class="btn btn-default" onclick='javascript:showCase(2)'>全部</button>
+</div>
+<p></p>
+<table id='result_table' class="table table-bordered">
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>测试套件/测试用例</td>
+    <td>总数</td>
+    <td>通过</td>
+    <td>失败</td>
+    <td>错误</td>
+    <td>查看</td>
+</tr>
+
+<tr class='passClass'>
+    <td>KWD.framework.testapi.case.test_checkcode.TestCheckCode: 测试检查组织机构代码证是否被占用接口【P_Merchant__CheckCode】</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c1',1)">详情</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_checkcode: 测试检查组织机构代码证是否被占用接口【P_Merchant__CheckCode】</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
+        通过</a>
+
+    <div id='div_pt1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1: 1 {"sign": "9b3e31bfb058a31a240cd4ec175b0389", "p_userid": "", "p_enterprisecode": ""} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çç¨æ·IDï¼","errorCode":"P_Merchant__GetBasicStatus|No_UserId_Found"} No_UserId_Found
+2 {"sign": "59d18c7cc6e7b6d15394f74aef5fca09", "p_userid": 26, "p_enterprisecode": ""} {"errorMessage":"ä¼ä¸ç»ç»æºæä»£ç è¯ä¸è½ä¸ºç©ºï¼","errorCode":"P_Merchant__AddStep1|No_EnterpriseCode_Found"} No_EnterpriseCode_Found
+3 {"sign": "9f92d7f6770d45f7b35e1e45afb038ad", "p_userid": "", "p_enterprisecode": "11111111-1"} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çç¨æ·IDï¼","errorCode":"P_Merchant__GetBasicStatus|No_UserId_Found"} No_UserId_Found
+4 {"sign": "dd7574ae7cbcafa4a8f5b0363a4a069e", "p_userid": 26, "p_enterprisecode": "11111111-1"} {"errorMessage":"è¯¥ç»ç»æºæä»£ç å·²è¢«ä½¿ç¨ï¼","errorCode":"P_Merchant__CheckCode|EnterpriseCode_Exist"} EnterpriseCode_Exist
+5 {"sign": "c9956b66e917947c80cd367756970083", "p_userid": 26, "p_enterprisecode": "99999999-9"} {} {}
+6 {"sign": "bd6bb9aa7c20a26c32d21d2ea2090529", "p_userid": 26, "p_enterprisecode": "1"} {} {}
+7 {"sign": "59d18c7cc6e7b6d15394f74aef5fca09", "p_userid": 26, "p_enterprisecode": " "} {"errorMessage":"ä¼ä¸ç»ç»æºæä»£ç è¯ä¸è½ä¸ºç©ºï¼","errorCode":"P_Merchant__AddStep1|No_EnterpriseCode_Found"} No_EnterpriseCode_Found
+8 {"sign": "9bbd3c0444f7406df7ab6a30e3e8293e", "p_userid": 26, "p_enterprisecode": null} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+9 {"sign": "a1c36d05c3b4fc0aa5e9b8cfc8d30216", "p_userid": 26, "p_enterprisecode": "q@#&lt;&gt;?%^$"} {} {}
+10 {"sign": "81eafd490aca5df1ad9a234d44b35634", "p_userid": 26, "p_enterprisecode": "qqqqqqqq-q"} {} {}
+11 {"sign": "815a05327c5e5b3448d7b0ece52677fb", "p_userid": 26, "p_enterprisecode": "\u6c49\u5b57\u6c49\u5b57\u6c49dfjklsjdlfjsldjflksjdlfkjd\u591a\u5c11\u7ea7\u4e86\u623f\u95f4\u7231\u6b7b\u4e86\u7684\u98ce\u666f\u4e09\u59d0\u592b\u8bf4\u5f00\u4e86\u5927\u59d0\u592b\u987a\u8def\u5feb\u9012\u9632\u6c34\u7b49\u7ea7\u5206\u7c7b\u8003\u8bd5\u975e\u8c01\u79bb\u5f00\u7684\u623f\u95f4\u5546\u91cf\u770b\u629a\u751f\u8def\u53e3\u5206\u7c7b\u8003\u8bd5\u8d39\u9178\u8fa3\u7c89\u662f\u5426\u662f\u51af\u8001\u5e08\u5b57\u6c49\u5b57-\u6c49"} {} {}
+12 {"sign": "17c6d63823a81bd8d3200377a317865e", "p_userid": 26, "p_enterprisecode": "111111111111111111111111111111"} {} {}
+13 {"sign": "0858ebbc394bb35f5293cea68a1d7575", "p_userid": 26, "p_enterprisecode": "1111111111111111111111111111111"} {} {}
+14 {"sign": "e753e06f82be717be5d32e34ea6bddac", "p_userid": 9999, "p_enterprisecode": "99999999-9"} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çç¨æ·IDï¼","errorCode":"P_Merchant__GetBasicStatus|No_UserId_Found"} No_UserId_Found
+15 {"sign": "eb551d19dda99a94c8f637ff80e0c3f0", "p_userid": " ", "p_enterprisecode": "99999999-9"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+16 {"sign": "dd4821280adc60a131758b17fd78d611", "p_userid": null, "p_enterprisecode": "99999999-9"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+17 {"sign": "7bae2767576029a73a4018cde1673e4d", "p_userid": "q@#&lt;&gt;?%^$", "p_enterprisecode": "99999999-9"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+18 {"sign": "c0e4b09c23332ef6ae944a512285e01c", "p_userid": "qqqqqqqq-q", "p_enterprisecode": "99999999-9"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+19 {"sign": "9246e6828db3a61a72159e21ccf88f6b", "p_userid": "\u6c49\u5b57\u6c49\u5b57\u6c49\u5b57\u6c49\u5b57-\u6c49", "p_enterprisecode": "99999999-9"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+20 {"sign": "2d58098c2fb913929feb1173290b87f4", "p_userid": 111111111111111111111111111111, "p_enterprisecode": "99999999-9"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+21 {"sign": "dfbf22c33d4d01d6fa1837f3642fb749", "p_userid": 1111111111111111111111111111111, "p_enterprisecode": "99999999-9"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>KWD.framework.testapi.case.test_checkname.TestCheckName: 测试检查企业名称是否被占用接口【P_Merchant__CheckName】</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c2',1)">详情</a></td>
+</tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_checkname: 测试检查企业名称是否被占用接口【P_Merchant__CheckName】</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.1')" >
+        通过</a>
+
+    <div id='div_pt2.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.1: 1 {"p_enterprisename": "", "p_userid": 26, "sign": "324e4f18e600b4a5075c299be7247158"} {"errorMessage":"ä¼ä¸åç§°ä¸è½ä¸ºç©ºï¼","errorCode":"P_Merchant__AddStep1|No_EnterpriseName_Found"} No_EnterpriseName_Found
+2 {"p_enterprisename": "\u6d4b\u8bd5", "p_userid": "", "sign": "c23d57dbacaf10cafc9784772458c05e"} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çç¨æ·IDï¼","errorCode":"P_Merchant__GetBasicStatus|No_UserId_Found"} No_UserId_Found
+3 {"p_enterprisename": "\u6d4b\u8bd5", "p_userid": 26, "sign": "751a77c3bb7782910fb97ba6e4264a39"} {"errorMessage":"è¯¥ä¼ä¸åç§°å·²è¢«ä½¿ç¨ï¼","errorCode":"P_Merchant__CheckName|EnterpriseName_Exist"} EnterpriseName_Exist
+4 {"p_enterprisename": "\u6ca1\u6709\u5360\u7528", "p_userid": 26, "sign": "7a394394f799b44971091d6d44c67472"} {} {}
+5 {"p_enterprisename": " ", "p_userid": 26, "sign": "324e4f18e600b4a5075c299be7247158"} {"errorMessage":"ä¼ä¸åç§°ä¸è½ä¸ºç©ºï¼","errorCode":"P_Merchant__AddStep1|No_EnterpriseName_Found"} No_EnterpriseName_Found
+6 {"p_enterprisename": null, "p_userid": 26, "sign": "9bbd3c0444f7406df7ab6a30e3e8293e"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+7 {"p_enterprisename": "q@#&lt;&gt;?%^$", "p_userid": 26, "sign": "23a3bd6599511b0e15e5f7a33a55635a"} {} {}
+8 {"p_enterprisename": "qqqqqqqq-q", "p_userid": 26, "sign": "77e846552a2238d7274483fdec3ee519"} {} {}
+9 {"p_enterprisename": "\u6c49\u5b57\u6c49\u5b57\u6c49\u5b57\u6c49\u5b57-\u6c49", "p_userid": 26, "sign": "d7dc5e034dc8e55dc27a7fbb2683fdeb"} {} {}
+10 {"p_enterprisename": "11111011111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111", "p_userid": 26, "sign": "2d19e3d1101ec4b9964ec4eb958952e8"} {} {}
+11 {"p_enterprisename": "111101111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111", "p_userid": 26, "sign": "84f2da88584cce3d25af5f81191afcc6"} {} {}
+12 {"p_enterprisename": "\u6ca1\u6709\u5360\u7528", "p_userid": 9999, "sign": "67af37e734b2f9771fd5281fea79b88e"} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çç¨æ·IDï¼","errorCode":"P_Merchant__GetBasicStatus|No_UserId_Found"} No_UserId_Found
+13 {"p_enterprisename": "\u6ca1\u6709\u5360\u7528", "p_userid": " ", "sign": "be117b81b1e7590ddcbd92121b1a3cdd"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+14 {"p_enterprisename": "\u6ca1\u6709\u5360\u7528", "p_userid": null, "sign": "7f7b6788ad77d3aa8ee4cba4991a099f"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+15 {"p_enterprisename": "\u6ca1\u6709\u5360\u7528", "p_userid": "q@#&lt;&gt;?%^$", "sign": "7d2add8f45af7ce161890f3cc7e158f6"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+16 {"p_enterprisename": "\u6ca1\u6709\u5360\u7528", "p_userid": "qqqqqqqq-q", "sign": "fc58c580ac0653adf191977474615af2"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+17 {"p_enterprisename": "\u6ca1\u6709\u5360\u7528", "p_userid": "\u6c49\u5b57\u6c49\u5b57\u6c49\u5b57\u6c49\u5b57-\u6c49", "sign": "0899d3345231de38c49ad5b9150d2295"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+18 {"p_enterprisename": "\u6ca1\u6709\u5360\u7528", "p_userid": 111111111111111111111111111111, "sign": "53071f47818e8ee99ed2411eb796d4b0"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+19 {"p_enterprisename": "\u6ca1\u6709\u5360\u7528", "p_userid": 1111111111111111111111111111111, "sign": "82d72749e8e30598305cdb054306bcf9"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>KWD.framework.testapi.case.test_getapplylist.TestGetApplyList: 测试获取商家入驻申请资料接口【P_Merchant__GetApplyList】</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c3',1)">详情</a></td>
+</tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_getapplylist: 测试获取商家入驻申请资料接口【P_Merchant__GetApplyList】</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.1')" >
+        通过</a>
+
+    <div id='div_pt3.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.1: 1 {"p_userid": 999, "sign": "226bf5fe8ca49907d4d47e763c8217a6"} {"errorMessage":"è¯¥ç¨æ·ä¸å­å¨ï¼","errorCode":"P_Merchant__GetApplyList|No_Userid_Found"} No_Userid_Found
+2 {"p_userid": 44, "sign": "f23a30a0427fd33639fe8e162d81ba08"} {"errorMessage":"è¯¥ç¨æ·ä¸å­å¨ï¼","errorCode":"P_Merchant__GetApplyList|No_Userid_Found"} No_Userid_Found
+3 {"p_userid": 26, "sign": "9bbd3c0444f7406df7ab6a30e3e8293e"} {"p_status":7,"p_approvememo":"deny","step2":[{"foundedtime":null,"ecinfo":null,"offlineinfo":null,"registeredcapital":null,"brand":null,"yearsalerroom":null}],"step0":[{"referrer":0,"contacteremail":"57@qq.com","locationname":"åäº¬åäº¬å¸ä¸ååº","contacter":"èç³»äºº57","merchantid":29,"enterprisecode":"11-55","locationid":"110101","managetype":"ç»è¥ç±»å«57","contactermobile":"11111111141","adress":"åä½å°å57","enterprisename":"æ±å­"}],"step1":[{"licenseid":4161,"expirationdate":"2018-01-02","recid":1,"url":"attach/ceshi/1.jpg"},{"licenseid":4163,"expirationdate":"2018-02-03","recid":3,"url":"a4.jpg"},{"licenseid":4162,"expirationdate":"2018-02-03","recid":4,"url":"attach/ceshi/4.jpg"}]} p_status
+4 {"p_userid": "", "sign": "02808564fb59e0726f914be40c07c17d"} {"errorMessage":"è¯¥ç¨æ·ä¸å­å¨ï¼","errorCode":"P_Merchant__GetApplyList|No_Userid_Found"} No_Userid_Found
+5 {"p_userid": " ", "sign": "02808564fb59e0726f914be40c07c17d"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+6 {"p_userid": null, "sign": "e5413e79e4dc296d6e609c27ae9180b5"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+7 {"p_userid": "q@#&lt;&gt;?%^$", "sign": "9cb0aca71f268968f538da9e2b23137e"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+8 {"p_userid": "qqqqqqqq-q", "sign": "fc8b271ba4cd2f35553ac4f05288a931"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+9 {"p_userid": "\u6c49\u5b57\u6c49\u5b57\u6c49\u5b57\u6c49\u5b57-\u6c49", "sign": "4f8589adf4f6576630d74a0be4fa979f"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+10 {"p_userid": 11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111, "sign": "fa0ebdc860715e2db9a9cd76069ba1d9"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+11 {"p_userid": 111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111, "sign": "cf7597af11846752b4efaad8189d1238"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>KWD.framework.testapi.case.test_getarea.TestGetArea: 测试获取所在地接口【P_User__GetArea】</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c4',1)">详情</a></td>
+</tr>
+
+<tr id='pt4.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_getarea: 测试获取所在地接口【P_User__GetArea】</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.1')" >
+        通过</a>
+
+    <div id='div_pt4.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.1: 1 {"p_id": "0", "sign": "d53d1df4a2abc5eb45f434e6008ffc74"} {"res0":[{"name":"åäº¬","id":"110000"},{"name":"å¤©æ´¥","id":"120000"},{"name":"æ²³å","id":"130000"},{"name":"å±±è¥¿","id":"140000"},{"name":"åèå¤","id":"150000"},{"name":"è¾½å®","id":"210000"},{"name":"åæ","id":"220000"},{"name":"é»é¾æ±","id":"230000"},{"name":"ä¸æµ·","id":"310000"},{"name":"æ±è","id":"320000"},{"name":"æµæ±","id":"330000"},{"name":"å®å¾½","id":"340000"},{"name":"ç¦å»º","id":"350000"},{"name":"æ±è¥¿","id":"360000"},{"name":"å±±ä¸","id":"370000"},{"name":"æ²³å","id":"410000"},{"name":"æ¹å","id":"420000"},{"name":"æ¹å","id":"430000"},{"name":"å¹¿ä¸","id":"440000"},{"name":"å¹¿è¥¿","id":"450000"},{"name":"æµ·å","id":"460000"},{"name":"éåº","id":"500000"},{"name":"åå·","id":"510000"},{"name":"è´µå·","id":"520000"},{"name":"äºå","id":"530000"},{"name":"è¥¿è","id":"540000"},{"name":"éè¥¿","id":"610000"},{"name":"çè","id":"620000"},{"name":"éæµ·","id":"630000"},{"name":"å®å¤","id":"640000"},{"name":"æ°ç","id":"650000"},{"name":"å°æ¹¾","id":"710000"},{"name":"é¦æ¸¯","id":"810000"},{"name":"æ¾³é¨","id":"820000"}]} 110000
+2 {"p_id": "110000", "sign": "4c6551d87dbfb2834b82fe8d4f88721d"} {"res0":[{"name":"åäº¬å¸","id":"110100"}]} 110100
+3 {"p_id": "110100", "sign": "2f1b9740a68984b173d45aed11560d6a"} {"res0":[{"name":"ä¸ååº","id":"110101"},{"name":"è¥¿ååº","id":"110102"},{"name":"æé³åº","id":"110105"},{"name":"ä¸°å°åº","id":"110106"},{"name":"ç³æ¯å±±åº","id":"110107"},{"name":"æµ·æ·åº","id":"110108"},{"name":"é¨å¤´æ²åº","id":"110109"},{"name":"æ¿å±±åº","id":"110111"},{"name":"éå·åº","id":"110112"},{"name":"é¡ºä¹åº","id":"110113"},{"name":"æå¹³åº","id":"110114"},{"name":"å¤§å´åº","id":"110115"},{"name":"ææåº","id":"110116"},{"name":"å¹³è°·åº","id":"110117"},{"name":"å¯äºå¿","id":"110228"},{"name":"å»¶åºå¿","id":"110229"}]} 110101
+4 {"p_id": "110101", "sign": "55048dc34c0c9b8f7e13f5803e6478b9"} {"res0":[]} []
+5 {"p_id": "", "sign": "a819b81abb6e98bb84fed102e8f9d3fe"} {"res0":[]} []
+6 {"p_id": " ", "sign": "a819b81abb6e98bb84fed102e8f9d3fe"} {"res0":[]} []
+7 {"p_id": "&lt;&gt;#$%@#$%", "sign": "16afd834175b8ee09a0d4d8597620bab"} {"res0":[]} []
+8 {"p_id": "djfaks", "sign": "0f4857e0df5155d2cf4ecfaf290beace"} {"res0":[]} []
+9 {"p_id": "\u53d1\u591a\u5c11\u5feb\u4e50", "sign": "04471e64142674aeb8a1ca1f72d2108b"} {"res0":[]} []
+10 {"p_id": "99595959595", "sign": "221d293e5d7fd33a05fcdbed70663a0c"} {"res0":[]} []
+11 {"p_id": "1", "sign": "5f5b1aa52e425ac6818e533da158bae4"} {"res0":[]} []
+12 {"p_id": null, "sign": "e5413e79e4dc296d6e609c27ae9180b5"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>KWD.framework.testapi.case.test_getbasicstatus.TestGetBasicStatus: 测试检查商户状态信息接口【P_Merchant__GetBasicStatus】</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c5',1)">详情</a></td>
+</tr>
+
+<tr id='pt5.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_getbasicstatus: 测试检查商户状态信息接口【P_Merchant__GetBasicStatus】</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.1')" >
+        通过</a>
+
+    <div id='div_pt5.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt5.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt5.1: 1 {"p_userid": "", "sign": "02808564fb59e0726f914be40c07c17d"} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çç¨æ·IDï¼","errorCode":"P_Merchant__GetBasicStatus|No_UserId_Found"} No_UserId_Found
+2 {"p_userid": " ", "sign": "02808564fb59e0726f914be40c07c17d"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+3 {"p_userid": null, "sign": "e5413e79e4dc296d6e609c27ae9180b5"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+4 {"p_userid": 26, "sign": "9bbd3c0444f7406df7ab6a30e3e8293e"} {"p_status":7,"p_enterprisename":"æ±å­"} p_status
+5 {"p_userid": "&lt;&gt;%$", "sign": "e0193a4b671eb9458bb5322fa9ab4f3f"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+6 {"p_userid": "qqqq", "sign": "8b4596c2c2a9a676d36201afb329c99a"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+7 {"p_userid": "\u8bb0\u5f55", "sign": "f045deaa341eb3f163fb8ae9a5af2ec6"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+8 {"p_userid": 999, "sign": "226bf5fe8ca49907d4d47e763c8217a6"} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çç¨æ·IDï¼","errorCode":"P_Merchant__GetBasicStatus|No_UserId_Found"} No_UserId_Found
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>KWD.framework.testapi.case.test_getmobile.TestGetMobile: 测试检查手机号是否被占用接口【P_User__GetMobile】</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c6',1)">详情</a></td>
+</tr>
+
+<tr id='pt6.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_getmobile: 测试检查手机号是否被占用接口【P_User__GetMobile】</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.1')" >
+        通过</a>
+
+    <div id='div_pt6.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt6.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt6.1: 1 {"p_mobile": "13699999999", "sign": "a3bb0ae0a2dba8da8c6398dfb6a5db75"} {} {}
+2 {"p_mobile": "13691466408", "sign": "4f7a69e94479eab63220a51ca78b0f86"} {"errorMessage":"æ¨çææºå·å·²è¢«å ç¨ï¼","errorCode":"P_User__GetMobile|Mobile_Exist"} Mobile_Exist
+3 {"p_mobile": "", "sign": "47d5e1c4c5dae79560c14fcfe1786eb1"} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çææºå·ç ï¼","errorCode":"P_User__GetMobile|Mobile_Wrong"} Mobile_Wrong
+4 {"p_mobile": " ", "sign": "47d5e1c4c5dae79560c14fcfe1786eb1"} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çææºå·ç ï¼","errorCode":"P_User__GetMobile|Mobile_Wrong"} Mobile_Wrong
+5 {"p_mobile": null, "sign": "e5413e79e4dc296d6e609c27ae9180b5"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+6 {"p_mobile": "q@#&lt;&gt;?%^$", "sign": "e47bb4082b460a615d35248740de4b13"} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çææºå·ç ï¼","errorCode":"P_User__GetMobile|Mobile_Wrong"} Mobile_Wrong
+7 {"p_mobile": "qqqqqqqq-q", "sign": "bc66fba1cf9fac80a064dcf7d1f8bf0a"} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çææºå·ç ï¼","errorCode":"P_User__GetMobile|Mobile_Wrong"} Mobile_Wrong
+8 {"p_mobile": "\u6c49\u5b57\u6c49\u5b57\u6c49\u5b57\u6c49\u5b57-\u6c49", "sign": "5585ce7d9e03c85f4641ecc463f24031"} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çææºå·ç ï¼","errorCode":"P_User__GetMobile|Mobile_Wrong"} Mobile_Wrong
+9 {"p_mobile": "11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111", "sign": "28fe7da91d261a6d95e8c602681c8e0a"} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çææºå·ç ï¼","errorCode":"P_User__GetMobile|Mobile_Wrong"} Mobile_Wrong
+10 {"p_mobile": "111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111", "sign": "3345de3a773d125836be46ff4d4c3979"} {"errorMessage":"è¯·è¾å¥æ­£ç¡®çææºå·ç ï¼","errorCode":"P_User__GetMobile|Mobile_Wrong"} Mobile_Wrong
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>KWD.framework.testapi.case.test_getuserpasswordinfo.TestGetUserPasswordInfo: 测试验证用户登录密码接口【P_User__GetUserPasswordInfo】</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c7',1)">详情</a></td>
+</tr>
+
+<tr id='pt7.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_getuserpasswordinfo: 测试验证用户登录密码接口【P_User__GetUserPasswordInfo】</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt7.1')" >
+        通过</a>
+
+    <div id='div_pt7.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt7.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt7.1: 1 {"p_username": "13954569174", "p_password": "d08b1bea213f1f511a4a26ff32f1997fc6692053", "sign": "a7f6bd973a9ee3e9f23929ebab0f9334"} {"p_userid":205} p_userid
+2 {"p_username": "13691466408", "p_password": "48d98cb0420fc2ec8c0f7a670bd61ae52f80186c", "sign": "ceeb0ca7886303c3ec8b3a05bddae4ca"} {"errorMessage":"ç¨æ·åå¯ç ä¸å¹éï¼","errorCode":"P_User__GetUserPasswordInfo|No_Password_Match"} No_Password_Match
+3 {"p_username": "13691466408", "p_password": "ed9acd48dccb6ce2a7631e6489958163abfded9f", "sign": "bd9db42aceae18f9c637d4d613abfa40"} {"errorMessage":"ç¨æ·åå¯ç ä¸å¹éï¼","errorCode":"P_User__GetUserPasswordInfo|No_Password_Match"} No_Password_Match
+4 {"p_username": "13691466408", "p_password": null, "sign": "baf0ffa1527fcedbeee4bccebba97848"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+5 {"p_username": "13691466408", "p_password": "3446e6632697f4ad99fdc73930e8bdc602c9b436", "sign": "008b7d2e4f1886fdbf2aaac0cd6400f2"} {"errorMessage":"ç¨æ·åå¯ç ä¸å¹éï¼","errorCode":"P_User__GetUserPasswordInfo|No_Password_Match"} No_Password_Match
+6 {"p_username": "13691466408", "p_password": "d0445a073a849fe2048aad91330e2a04f7dd4104", "sign": "f179ec2131732f9a02160b84024aa17c"} {"errorMessage":"ç¨æ·åå¯ç ä¸å¹éï¼","errorCode":"P_User__GetUserPasswordInfo|No_Password_Match"} No_Password_Match
+7 {"p_username": "13691466408", "p_password": "74508b1f0629f76bf92e989e2a6064383b58c690", "sign": "a5f1c04ca15aa7af9d23576be092ceb9"} {"errorMessage":"ç¨æ·åå¯ç ä¸å¹éï¼","errorCode":"P_User__GetUserPasswordInfo|No_Password_Match"} No_Password_Match
+8 {"p_username": "", "p_password": "a0a930ecde5596c4ac139e35b2e1b3e5e9111dda", "sign": "eaee7086ffdceec2d49694c3fd42736e"} {"errorMessage":"ç¨æ·åä¸å­å¨ï¼","errorCode":"P_User__GetUserPasswordInfo|No_UserName_Found"} No_UserName_Found
+9 {"p_username": " ", "p_password": "a0a930ecde5596c4ac139e35b2e1b3e5e9111dda", "sign": "eaee7086ffdceec2d49694c3fd42736e"} {"errorMessage":"ç¨æ·åä¸å­å¨ï¼","errorCode":"P_User__GetUserPasswordInfo|No_UserName_Found"} No_UserName_Found
+10 {"p_username": null, "p_password": "a0a930ecde5596c4ac139e35b2e1b3e5e9111dda", "sign": "57fdb505b71189f884f668635daad723"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+11 {"p_username": "99999999", "p_password": "a0a930ecde5596c4ac139e35b2e1b3e5e9111dda", "sign": "99a4e8844f813e8888368ecf095a3032"} {"errorMessage":"ç¨æ·åä¸å­å¨ï¼","errorCode":"P_User__GetUserPasswordInfo|No_UserName_Found"} No_UserName_Found
+12 {"p_username": "djkl", "p_password": "a0a930ecde5596c4ac139e35b2e1b3e5e9111dda", "sign": "30a86b3927f9cb2b3c80ecad49c4dbc4"} {"errorMessage":"ç¨æ·åä¸å­å¨ï¼","errorCode":"P_User__GetUserPasswordInfo|No_UserName_Found"} No_UserName_Found
+13 {"p_username": "&lt;&gt;$#@$!%", "p_password": "a0a930ecde5596c4ac139e35b2e1b3e5e9111dda", "sign": "c782d727eda0dca11df108d86fdd1569"} {"errorMessage":"ç¨æ·åä¸å­å¨ï¼","errorCode":"P_User__GetUserPasswordInfo|No_UserName_Found"} No_UserName_Found
+14 {"p_username": "\u6c49\u5b57\u6c49\u5b57", "p_password": "a0a930ecde5596c4ac139e35b2e1b3e5e9111dda", "sign": "2be033f5f322682d70e0691f9c8baa5b"} {"errorMessage":"ç¨æ·åä¸å­å¨ï¼","errorCode":"P_User__GetUserPasswordInfo|No_UserName_Found"} No_UserName_Found
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>KWD.framework.testapi.case.test_addstep1.TestAddStep1: 测试商户入驻第一步的接口【P_Merchant__AddStep1】</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c8',1)">详情</a></td>
+</tr>
+
+<tr id='ft8.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_addstep1: 测试商户入驻第一步的接口【P_Merchant__AddStep1】</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.1')" >
+        失败</a>
+
+    <div id='div_ft8.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.1: 13639510884
+{'p_username': '13639510884', 'p_password': '5a3b66578f3f1c0d3cc9d3de55676c519bb84dfb', 'p_mobile': '13639510884', 'sign': '3ee95e392ea6e8eccb7b9eaf2d7ab0c4'}
+1 {"p_referrer": 0, "p_contacterEmail": "", "p_adress": "", "p_enterpriseCode": "", "sign": "816a905b081db79040dd883bea9b09b0", "p_contacter": "", "p_manageType": "", "p_contacterMobile": "", "p_enterpriseName": "", "p_locationid": "", "p_userid": 634} {"errorMessage":"ä¼ä¸åç§°ä¸è½ä¸ºç©ºï¼","errorCode":"P_Merchant__AddStep1|No_EnterpriseName_Found"} No_EnterpriseName_Found
+2 {"p_referrer": 0, "p_contacterEmail": "", "p_adress": "\u5355\u4f4d\u5730\u57401", "p_enterpriseCode": "111-1", "sign": "ac27239ac174058904d4a82794cecc7c", "p_contacter": "\u8054\u7cfb\u4eba1", "p_manageType": "\u7ecf\u8425\u7c7b\u522b1", "p_contacterMobile": "11111111111", "p_enterpriseName": "\u4f01\u4e1a\u540d\u79f0111", "p_locationid": "110101", "p_userid": 634} {"errorMessage":"ä¼ä¸åç§°æç»ç»æºæä»£ç è¯éå¤ï¼","errorCode":"P_Merchant__AddStep1|Userid_Exist"} {}
+Traceback (most recent call last):
+  File "D:\Keyworddriven\KWD\framework\testapi\case\test_addstep1.py", line 20, in test_addstep1
+    self.assertIn(case['code'], case['response'])
+AssertionError: '{}' not found in '{"errorMessage":"\xe4\xbc\x81\xe4\xb8\x9a\xe5\x90\x8d\xe7\xa7\xb0\xe6\x88\x96\xe7\xbb\x84\xe7\xbb\x87\xe6\x9c\xba\xe6\x9e\x84\xe4\xbb\xa3\xe7\xa0\x81\xe8\xaf\x81\xe9\x87\x8d\xe5\xa4\x8d\xef\xbc\x81","errorCode":"P_Merchant__AddStep1|Userid_Exist"}'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>KWD.framework.testapi.case.test_addstep2.TestAddStep2: 测试商户入驻第二步接口【P_Merchant__AddStep2】</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c9',1)">详情</a></td>
+</tr>
+
+<tr id='pt9.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_addstep2: 测试商户入驻第二步接口【P_Merchant__AddStep2】</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt9.1')" >
+        通过</a>
+
+    <div id='div_pt9.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt9.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt9.1: 13923573350
+{'p_username': '13923573350', 'p_password': '1d0b29c9e7b099363afd3ceeacc3f161ab63f8cd', 'p_mobile': '13923573350', 'sign': '0ab7c6e974c0e838d9298fe977847e4d'}
+{"p_referrer": 0, "p_adress": "dnKB2kNAUyrG0JC", "p_enterpriseCode": "dnKB2kNAUyrG0JC", "sign": "454a7563b562bd3daac8476b4702116b", "p_locationid": "110101", "p_contacterEmail": "", "p_userid": 635, "p_contacter": "dnKB2kNAUyrG0JC", "p_manageType": "dnKB2kNAUyrG0JC", "p_contacterMobile": "13683879534", "p_enterpriseName": "dnKB2kNAUyrG0JC"}
+1 {"p_attachlist": "", "p_attachcount": "", "p_userid": 635, "sign": "81e0519363d03dbeeaa919bec9428310"} {"errorMessage":"è¯·ä¸ä¼ è¥ä¸æ§ç§å¤å°ä»¶ï¼","errorCode":"P_Merchant__EditStep2|No_License1"} No_License1
+2 {"p_attachlist": "", "p_attachcount": 1, "p_userid": 635, "sign": "e675c8ae0ebff9c1a79518b2ee669769"} {"errorMessage":"è¯·ä¸ä¼ è¥ä¸æ§ç§å¤å°ä»¶ï¼","errorCode":"P_Merchant__EditStep2|No_License1"} No_License1
+3 {"p_attachlist": " ", "p_attachcount": 1, "p_userid": 635, "sign": "e675c8ae0ebff9c1a79518b2ee669769"} {"errorMessage":"è¯·ä¸ä¼ è¥ä¸æ§ç§å¤å°ä»¶ï¼","errorCode":"P_Merchant__EditStep2|No_License1"} No_License1
+4 {"p_attachlist": null, "p_attachcount": 1, "p_userid": 635, "sign": "104921c94f19803f291c49eef15298cd"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+5 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]", "p_attachcount": 1, "p_userid": 635, "sign": "9a1821a56ee170bb243ad941afd75abd"} {"errorMessage":"è¯·ä¸ä¼ é¶è¡å¼æ·è¯æå¤å°ä»¶ï¼","errorCode":"P_Merchant__EditStep2|No_License4"} No_License4
+6 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/2.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 635, "sign": "e3ac88a1b27a78cbc01a93ec4509747f"} {"errorMessage":"è¯·ä¸ä¼ é¶è¡å¼æ·è¯æå¤å°ä»¶ï¼","errorCode":"P_Merchant__EditStep2|No_License4"} No_License4
+7 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/2.jpg[,]20180203[,][;]", "p_attachcount": 3, "p_userid": 635, "sign": "7f7e1b689535505ac7dc7b16fb3d9e9e"} {"errorMessage":"è¯·ä¸ä¼ é¶è¡å¼æ·è¯æå¤å°ä»¶ï¼","errorCode":"P_Merchant__EditStep2|No_License4"} No_License4
+8 {"p_attachlist": "122135444", "p_attachcount": 2, "p_userid": 635, "sign": "d3f26e6d311f17a445505cbdf9cee70a"} {"errorMessage":"è¯·ä¸ä¼ è¥ä¸æ§ç§å¤å°ä»¶ï¼","errorCode":"P_Merchant__EditStep2|No_License1"} No_License1
+9 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/2.jpg[,]20180203[,][;]", "p_attachcount": 0, "p_userid": 635, "sign": "3c7d617c517240306adca689956306c4"} {"errorMessage":"è¯ä»¶æ°éè¾å¥éè¯¯ï¼","errorCode":"P_Merchant__EditStep2|No_Attach"} No_Attach
+10 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/2.jpg[,]20180203[,][;]", "p_attachcount": -2, "p_userid": 635, "sign": "62d8268165c03ea8f496d079e63b6eec"} {"errorMessage":"è¯ä»¶æ°éè¾å¥éè¯¯ï¼","errorCode":"P_Merchant__EditStep2|No_Attach"} No_Attach
+11 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/2.jpg[,]20180203[,][;]", "p_attachcount": "2.3", "p_userid": 635, "sign": "7733b29b74e8887f168bbb378bdd34f3"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+12 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 635, "sign": "dc937166616a63ad61e8dca449817b4a"} {} {}
+13 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": " ", "p_userid": 635, "sign": "3e4d76018d2f0ba4df2ce8e680b2027b"} {"errorMessage":"åæ°ç±»åéè¯¯","errorCode":"Parameter|NotIntegerValue"} NotIntegerValue
+14 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": null, "p_userid": 635, "sign": "d08d1fe77b7f3aeed3fa1c05a5a56e8f"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+15 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 1, "p_userid": 635, "sign": "d7018955a768da12bb703fbb1ddfa452"} {"errorMessage":"éä»¶æ°éæ£éªéè¯¯ï¼","errorCode":"P_Merchant__EditStep2|AttachCount_Not_Match"} AttachCount_Not_Match
+16 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 3, "p_userid": 635, "sign": "77ee94231b604ad903516ae56a5babd8"} {"errorMessage":"éä»¶æ°éæ£éªéè¯¯ï¼","errorCode":"P_Merchant__EditStep2|AttachCount_Not_Match"} AttachCount_Not_Match
+17 {"p_attachlist": "1[,][,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 635, "sign": "ebe7dd2ce7548114065e402930929bbd"} {"errorMessage":"è¯·ä¸ä¼ å¿è¦çç§çæä»¶!","errorCode":"P_Merchant__EditStep2|No_Url"} No_Url
+18 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,][,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 635, "sign": "ef10497c9c2fddb2b3d4a3d1e3d44193"} {"errorMessage":"è¯·ä¸ä¼ å¿è¦çç§çæä»¶!","errorCode":"P_Merchant__EditStep2|No_Url"} No_Url
+19 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 635, "sign": "756c56f80f0019c617c469199925e097"} {"errorMessage":"è¯·æ£æ¥ä¸ä¼ éä»¶æ ¼å¼ï¼","errorCode":"P_Merchant__EditStep2|attachindex&lt;3"} attachindex&lt;3
+20 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,]", "p_attachcount": 2, "p_userid": 635, "sign": "23af68d459d2bc807f10e7e0a9f6fd1f"} {"errorMessage":"è¯·ä¸ä¼ é¶è¡å¼æ·è¯æå¤å°ä»¶ï¼","errorCode":"P_Merchant__EditStep2|No_License4"} No_License4
+21 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,][,][;]4[,]attach/ceshi/4.jpg[,][,][;]", "p_attachcount": 2, "p_userid": 635, "sign": "26d7dbcd688ba8d2517126c5ea6cfdef"} {"errorMessage":"è¯·ä¸ä¼ å¿è¦çç§çæä»¶!","errorCode":"P_Merchant__EditStep2|No_Url"} No_Url
+22 {"p_attachlist": "qq[,]attach/ceshi/1.jpg[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 635, "sign": "c02bfbdbc65327bd9e0506146615b43f"} {"errorMessage":"æªç¥éè¯¯","errorCode":"UnknownError"} UnknownError
+23 {"p_attachlist": "1[,]attach/ceshi/1[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 635, "sign": "6e2cb9af81d60ab82abb34199b1213e7"} {} {}
+24 {"p_attachlist": "1[,]1[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 635, "sign": "faa00e39d511e91a9e4c3f224e2bc169"} {} {}
+25 {"p_attachlist": "1[,]null[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 635, "sign": "dd54afab869c3810667c45e325545538"} {} {}
+26 {"p_attachlist": "1[,]\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 635, "sign": "6134156821483fd5582cc4f926f3ffc7"} {} {}
+27 {"p_attachlist": "1[,]\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u4e2d\u6587\u4e2d\u6587\u4e2d\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u658711111111111111\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587[,]20180102[,][;]4[,]\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u4e2d\u6587\u4e2d\u6587\u4e2d\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u658711111111111111\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 635, "sign": "21ea11da72f1f6a9b6dba96088e52d47"} {} {}
+28 {"p_attachlist": "1[,]\u4e2d\u65871\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587\u4e2d\u6587[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 635, "sign": "605289fde3d6a20a635fff7cd6e244a4"} {"errorMessage":"æªç¥éè¯¯","errorCode":"UnknownError"} UnknownError
+29 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 635, "sign": "4af95e1447e1e484e2a2ef03bcf4940a"} {"errorMessage":"è¯·ä¸ä¼ é¶è¡å¼æ·è¯æå¤å°ä»¶ï¼","errorCode":"P_Merchant__EditStep2|No_License4"} No_License4
+30 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]1[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 635, "sign": "3cf18b8c5d964120808110b7a1ddd557"} {"errorMessage":"è¯·ä¸ä¼ è¥ä¸æ§ç§å¤å°ä»¶ï¼","errorCode":"P_Merchant__EditStep2|No_License1"} No_License1
+31 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 3, "p_userid": 635, "sign": "4eedb4afea1c4eed50b6407f2f05f498"} {} {}
+32 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/4.jpg[,]20180203[,][;]2[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 4, "p_userid": 635, "sign": "7b3c66d1d25cf5a613b49c648e6d0066"} {"errorMessage":"è¯·ä¸è¦éå¤ä¸ä¼ ç¨å¡ç»è®°è¯å¤å°ä»¶ï¼","errorCode":"P_Merchant__EditStep2|More_License2"} More_License2
+33 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]3[,]attach/ceshi/4.jpg[,]20180203[,][;]3[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 4, "p_userid": 635, "sign": "0d1ef9fedb2e21edd00fe4b7727e1754"} {"errorMessage":"è¯·ä¸è¦éå¤ä¸ä¼ ç»ç»æºæä»£ç è¯å¤å°ä»¶!","errorCode":"P_Merchant__EditStep2|More_License3"} More_License3
+34 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]5[,]attach/ceshi/4.jpg[,]20180203[,][;]5[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 4, "p_userid": 635, "sign": "eae76ea42835b29cfe71a7d96c7c09f3"} {"errorMessage":"è¯·ä¸è¦éå¤ä¸ä¼ åæ æ³¨åè¯å¤å°ä»¶!","errorCode":"P_Merchant__EditStep2|More_License5"} More_License5
+35 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]6[,]attach/ceshi/4.jpg[,]20180203[,][;]6[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 4, "p_userid": 635, "sign": "33b0ac75a5e0d146279ed4140cf65858"} {} {}
+36 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]7[,]attach/ceshi/4.jpg[,]20180203[,][;]7[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 4, "p_userid": 635, "sign": "f428e53ccba9c25a83e8ce59090b9be1"} {} {}
+37 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/4.jpg[,]20180203[,][;]3[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]5[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 5, "p_userid": 635, "sign": "d39e966ccf790495046ce20ea5da7785"} {} {}
+38 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/4.jpg[,]20180203[,][;]3[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]5[,]attach/ceshi/4.jpg[,]20180203[,][;]6[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 6, "p_userid": 635, "sign": "6a017631d48e1742e257d8c9510d9ebd"} {} {}
+39 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/4.jpg[,]20180203[,][;]7[,]attach/ceshi/4.jpg[,]20180203[,][;]3[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]5[,]attach/ceshi/4.jpg[,]20180203[,][;]6[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 7, "p_userid": 635, "sign": "585d59d7ae1c9f79e2aa6806859082c6"} {} {}
+40 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/4.jpg[,]20180203[,][;]8[,]attach/ceshi/4.jpg[,]20180203[,][;]7[,]attach/ceshi/4.jpg[,]20180203[,][;]3[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]5[,]attach/ceshi/4.jpg[,]20180203[,][;]6[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 8, "p_userid": 635, "sign": "58894757a6e62c78636e45d985f83f12"} {"errorMessage":"ä¸ä¼ çè¯ä»¶ç±»åæªå®ä¹!","errorCode":"P_Merchant__EditStep2|More_Licenseid"} More_Licenseid
+41 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/4.jpg[,]20180203[,][;]8[,]attach/ceshi/4.jpg[,]20180203[,][;]8[,]attach/ceshi/4.jpg[,]20180203[,][;]7[,]attach/ceshi/4.jpg[,]20180203[,][;]3[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]5[,]attach/ceshi/4.jpg[,]20180203[,][;]6[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 9, "p_userid": 635, "sign": "02c868e33fa7798fdc4b4215b8ace584"} {"errorMessage":"ä¸ä¼ çè¯ä»¶ç±»åæªå®ä¹!","errorCode":"P_Merchant__EditStep2|More_Licenseid"} More_Licenseid
+42 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]2018-01-02[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 635, "sign": "114e25bb1dd4de0abf18a19a0919fbbd"} {"errorMessage":"è¯·æ£æ¥æ¥æï¼","errorCode":"P_Merchant__EditStep2|Wrong_Date"} Wrong_Date
+43 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]2018/01/02[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 635, "sign": "2dcc594acf85ef166f34b35c6872fef3"} {"errorMessage":"è¯·æ£æ¥æ¥æï¼","errorCode":"P_Merchant__EditStep2|Wrong_Date"} Wrong_Date
+44 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]sdsd[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 635, "sign": "7f4b92493f2c1206be4dd1d6e971bbea"} {"errorMessage":"è¯·æ£æ¥æ¥æï¼","errorCode":"P_Merchant__EditStep2|Wrong_Date"} Wrong_Date
+45 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]00001111[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 635, "sign": "6e96d8f38f3aad6754632340f3282606"} {"errorMessage":"è¯·æ£æ¥æ¥æï¼","errorCode":"P_Merchant__EditStep2|Wrong_Date"} Wrong_Date
+46 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 2, "p_userid": 635, "sign": "441436953775c895dffac97493f41c94"} {"errorMessage":"è¯·æ£æ¥ä¸ä¼ éä»¶æ ¼å¼ï¼","errorCode":"P_Merchant__EditStep2|attachindex&lt;3"} attachindex&lt;3
+47 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]2[,]attach/ceshi/4.jpg[,][,][;]", "p_attachcount": 3, "p_userid": 635, "sign": "e7723fb9a82b4163126f4818ba644b7e"} {"errorMessage":"è¯·ä¸ä¼ å¿è¦çç§çæä»¶!","errorCode":"P_Merchant__EditStep2|No_Url"} No_Url
+48 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]3[,]attach/ceshi/4.jpg[,][,][;]", "p_attachcount": 3, "p_userid": 635, "sign": "b51d1f3915346b693d40b8bf89d933ac"} {"errorMessage":"è¯·ä¸ä¼ å¿è¦çç§çæä»¶!","errorCode":"P_Merchant__EditStep2|No_Url"} No_Url
+49 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]5[,]attach/ceshi/4.jpg[,][,][;]", "p_attachcount": 3, "p_userid": 635, "sign": "41efeebabd33bf30aff7bfefda17aef9"} {"errorMessage":"è¯·ä¸ä¼ å¿è¦çç§çæä»¶!","errorCode":"P_Merchant__EditStep2|No_Url"} No_Url
+50 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]6[,]attach/ceshi/4.jpg[,][,][;]", "p_attachcount": 3, "p_userid": 635, "sign": "e33937fae908afb5bf8046889247d648"} {"errorMessage":"è¯·ä¸ä¼ å¿è¦çç§çæä»¶!","errorCode":"P_Merchant__EditStep2|No_Url"} No_Url
+51 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]3[,][,]attach/ceshi/4.jpg[,][;]", "p_attachcount": 3, "p_userid": 635, "sign": "418dc82da434a8e9551ae965e56e1d16"} {"errorMessage":"è¯·ä¸ä¼ å¿è¦çç§çæä»¶!","errorCode":"P_Merchant__EditStep2|No_Url"} No_Url
+52 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20150505[,][;]4[,]attach/ceshi/4.jpg[,][,][;]", "p_attachcount": 2, "p_userid": 635, "sign": "d081c3c102599eb1c541eca2900d3841"} {"errorMessage":"è¯·ä¸ä¼ å¿è¦çç§çæä»¶!","errorCode":"P_Merchant__EditStep2|No_Url"} No_Url
+53 {"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20150505[,][;]4[,]attach/ceshi/4.jpg[,]20111111[,][;][,]attach/ceshi/4.jpg[,]20111111[,][;]", "p_attachcount": 2, "p_userid": 635, "sign": "f049127468e8f4132b6b9926b1c134e8"} {"errorMessage":"è¯·ä¸ä¼ å¿è¦çç§çæä»¶!","errorCode":"P_Merchant__EditStep2|No_Url"} No_Url
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>KWD.framework.testapi.case.test_addstep3.TestAddStep3: 测试商户入驻第三步接口【P_Merchant__AddStep3】</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c10',1)">详情</a></td>
+</tr>
+
+<tr id='pt10.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_addstep3: 测试商户入驻第三步接口【P_Merchant__AddStep3】</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt10.1')" >
+        通过</a>
+
+    <div id='div_pt10.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt10.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt10.1: 13607039400
+{'p_username': '13607039400', 'p_password': '41820c67326a322527dba4c20fedbe0acba8768c', 'p_mobile': '13607039400', 'sign': '96835e3a21431d7db6dd540724c213b3'}
+{"p_referrer": 0, "p_adress": "4GpRin3J6gCS2ev", "p_enterpriseCode": "4GpRin3J6gCS2ev", "sign": "f43aa6a3b52466ff7c565ad3e0aa4f9f", "p_locationid": "110101", "p_contacterEmail": "", "p_userid": 636, "p_contacter": "4GpRin3J6gCS2ev", "p_manageType": "4GpRin3J6gCS2ev", "p_contacterMobile": "15806442870", "p_enterpriseName": "4GpRin3J6gCS2ev"}
+{"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/4.jpg[,]20180203[,][;]3[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]5[,]attach/ceshi/4.jpg[,]20180203[,][;]6[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 6, "p_userid": 636, "sign": "433c69b99317d3baaf1e4e0dd5686aaf"}
+{"p_userid": 636, "sign": "2744c374a584d8be7c70bc01c958b76a"}
+{"p_opid": 1, "p_merchantid": 600, "p_status": 5, "sign": "237c6ab5fd4d32d1fcbbb593fd518f34", "p_approvememo": "nVFh8QY0D9Ob3fU"}
+{"p_userid": 636, "sign": "2744c374a584d8be7c70bc01c958b76a"}
+{"p_userid": 636, "sign": "2744c374a584d8be7c70bc01c958b76a"}
+{"p_opid": 1, "p_merchantid": 600, "p_status": 5, "sign": "d81c47f852a497b2bf01c1f09f18bb44", "p_approvememo": "nTJcRM4A03gZxvj"}
+{"p_userid": 636, "sign": "2744c374a584d8be7c70bc01c958b76a"}
+{"p_userid": 636, "sign": "2744c374a584d8be7c70bc01c958b76a"}
+{"p_userid": 636, "sign": "2744c374a584d8be7c70bc01c958b76a"}
+{"p_userid": 636, "sign": "2744c374a584d8be7c70bc01c958b76a"}
+{"p_opid": 1, "p_merchantid": 600, "p_status": 5, "sign": "aae4d7662d2ae8fd31962ccc5e21b2b8", "p_approvememo": "ZpSnPdByv2qM7Ck"}
+{"p_userid": 636, "sign": "2744c374a584d8be7c70bc01c958b76a"}
+{"p_opid": 1, "p_merchantid": 600, "p_status": 5, "sign": "3090cd4c1a717dabf9101f7eadcf3775", "p_approvememo": "EOoaAFk0zghPibV"}
+{"p_userid": 636, "sign": "2744c374a584d8be7c70bc01c958b76a"}
+{"p_userid": 636, "sign": "2744c374a584d8be7c70bc01c958b76a"}
+{"p_userid": 636, "sign": "2744c374a584d8be7c70bc01c958b76a"}
+{"p_opid": 1, "p_merchantid": 600, "p_status": 5, "sign": "d32ff88752221ffe0b2b78a35acf8a14", "p_approvememo": "5uVNKyCj3EoD0IO"}
+{"p_userid": 636, "sign": "2744c374a584d8be7c70bc01c958b76a"}
+{"p_opid": 1, "p_merchantid": 600, "p_status": 5, "sign": "5e637a44230f62e65898dda7b28fe2aa", "p_approvememo": "QVtqryzTuFf73hA"}
+{"p_userid": 636, "sign": "2744c374a584d8be7c70bc01c958b76a"}
+{"p_userid": 636, "sign": "2744c374a584d8be7c70bc01c958b76a"}
+{"p_userid": 636, "sign": "2744c374a584d8be7c70bc01c958b76a"}
+{"p_userid": 636, "sign": "2744c374a584d8be7c70bc01c958b76a"}
+{"p_userid": 636, "sign": "2744c374a584d8be7c70bc01c958b76a"}
+{"p_userid": 636, "sign": "2744c374a584d8be7c70bc01c958b76a"}
+{"p_userid": 636, "sign": "2744c374a584d8be7c70bc01c958b76a"}
+{"p_userid": 636, "sign": "2744c374a584d8be7c70bc01c958b76a"}
+{"p_userid": 636, "sign": "2744c374a584d8be7c70bc01c958b76a"}
+{"p_userid": 636, "sign": "2744c374a584d8be7c70bc01c958b76a"}
+1 {"p_userid": 636, "p_foundedtime": "", "p_offlineinfo": "", "sign": "d912722e3de7997bafad69b8ab2d2b14", "p_brand": "", "p_yearSalerroom": "", "p_ecinfo": "", "p_registeredcapital": ""} {} {}
+2 {"p_userid": 636, "p_foundedtime": "1", "p_offlineinfo": "1", "sign": "cd7a39056761ae5238cf9354d19e1a24", "p_brand": "1", "p_yearSalerroom": "1", "p_ecinfo": "1", "p_registeredcapital": "1"} {"errorMessage":"æ¥ææ ¼å¼éè¯¯","errorCode":"Parameter|DateFormatInvalid"} DateFormatInvalid
+3 {"p_userid": 636, "p_foundedtime": "", "p_offlineinfo": "1", "sign": "1e166e28efa18e26ccfc6e31cb01ca1a", "p_brand": "1", "p_yearSalerroom": "1", "p_ecinfo": "1", "p_registeredcapital": "1"} {} {}
+4 {"p_userid": 636, "p_foundedtime": " ", "p_offlineinfo": "1", "sign": "1e166e28efa18e26ccfc6e31cb01ca1a", "p_brand": "1", "p_yearSalerroom": "1", "p_ecinfo": "1", "p_registeredcapital": "1"} {"errorMessage":"æ¥ææ ¼å¼éè¯¯","errorCode":"Parameter|DateFormatInvalid"} DateFormatInvalid
+5 {"p_userid": 636, "p_foundedtime": null, "p_offlineinfo": "1", "sign": "abeedf787598464afc36978180e6c81a", "p_brand": "1", "p_yearSalerroom": "1", "p_ecinfo": "1", "p_registeredcapital": "1"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+6 {"p_userid": 636, "p_foundedtime": "qq", "p_offlineinfo": "1", "sign": "b5f30cf7555045b7422594de507f60fd", "p_brand": "1", "p_yearSalerroom": "1", "p_ecinfo": "1", "p_registeredcapital": "1"} {"errorMessage":"æ¥ææ ¼å¼éè¯¯","errorCode":"Parameter|DateFormatInvalid"} DateFormatInvalid
+7 {"p_userid": 636, "p_foundedtime": "20111111", "p_offlineinfo": "1", "sign": "df29ac80be69f8ce5fee24ba5e81b08f", "p_brand": "1", "p_yearSalerroom": "1", "p_ecinfo": "1", "p_registeredcapital": "1"} {} {}
+8 {"p_userid": 636, "p_foundedtime": "2013-12-13", "p_offlineinfo": "1", "sign": "fc807ba61ecd1a54ca19c5d40244fc8e", "p_brand": "1", "p_yearSalerroom": "1", "p_ecinfo": "1", "p_registeredcapital": "1"} {} {}
+9 {"p_userid": 636, "p_foundedtime": "2222/11/11", "p_offlineinfo": "1", "sign": "13f016c45a7636b959a8b4ecf78aea08", "p_brand": "1", "p_yearSalerroom": "1", "p_ecinfo": "1", "p_registeredcapital": "1"} {"errorMessage":"æ¥ææ ¼å¼éè¯¯","errorCode":"Parameter|DateFormatInvalid"} DateFormatInvalid
+10 {"p_userid": 636, "p_foundedtime": "20160204", "p_offlineinfo": null, "sign": "fdf4afbbcf29ca462318148b4b46e75d", "p_brand": null, "p_yearSalerroom": "10000000000000", "p_ecinfo": null, "p_registeredcapital": "10000000000000"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+11 {"p_userid": 636, "p_foundedtime": "20160205", "p_offlineinfo": "\u7ebf\u4e0b\u7f51\u70b9", "sign": "51478445621a8feb716947f440b2e896", "p_brand": "\u8010\u514b", "p_yearSalerroom": "\u4e00\u4e07\u4ebf", "p_ecinfo": "\u6709\u7535\u5546", "p_registeredcapital": "\u4e00\u5343\u4ebf"} {} {}
+12 {"p_userid": 636, "p_foundedtime": "20160206", "p_offlineinfo": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "sign": "a31459b605d9bce49849e1571fdba3ad", "p_brand": "2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222", "p_yearSalerroom": "222222222222222222222222222222", "p_ecinfo": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "p_registeredcapital": "222222222222222222222222222222"} {} {}
+13 {"p_userid": 636, "p_foundedtime": "20160207", "p_offlineinfo": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "sign": "7809d4b3c0cd2a689dae7ebc3149115d", "p_brand": "2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222", "p_yearSalerroom": "222222222222222222222222222222", "p_ecinfo": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "p_registeredcapital": "2222222122222222222222222222222"} {"errorMessage":"åæ°é¿åº¦æ£æ¥å¤±è´¥","errorCode":"Parameter|LengthInvalid"} LengthInvalid
+14 {"p_userid": 636, "p_foundedtime": "20160208", "p_offlineinfo": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "sign": "5a85cdbe3ebcd1d609548558f9f1558a", "p_brand": "2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222", "p_yearSalerroom": "2222221222222222222222222222222", "p_ecinfo": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "p_registeredcapital": "222222222222222222222222222222"} {"errorMessage":"åæ°é¿åº¦æ£æ¥å¤±è´¥","errorCode":"Parameter|LengthInvalid"} LengthInvalid
+15 {"p_userid": 636, "p_foundedtime": "20160209", "p_offlineinfo": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "sign": "7e2317e9afbd96d4f4dc173850092d00", "p_brand": "21222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222", "p_yearSalerroom": "222222222222222222222222222222", "p_ecinfo": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "p_registeredcapital": "222222222222222222222222222222"} {"errorMessage":"åæ°é¿åº¦æ£æ¥å¤±è´¥","errorCode":"Parameter|LengthInvalid"} LengthInvalid
+16 {"p_userid": 636, "p_foundedtime": "20160210", "p_offlineinfo": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "sign": "df08984d252fa77bb3a5d683b9d5a3ab", "p_brand": "2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222", "p_yearSalerroom": "222222222222222222222222222222", "p_ecinfo": "eeee1eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "p_registeredcapital": "222222222222222222222222222222"} {"errorMessage":"åæ°é¿åº¦æ£æ¥å¤±è´¥","errorCode":"Parameter|LengthInvalid"} LengthInvalid
+17 {"p_userid": 636, "p_foundedtime": "20160211", "p_offlineinfo": "eeeeeee1eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "sign": "4edf0789b2bb37e168dcaa89d70e6b56", "p_brand": "2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222", "p_yearSalerroom": "222222222222222222222222222222", "p_ecinfo": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "p_registeredcapital": "222222222222222222222222222222"} {"errorMessage":"åæ°é¿åº¦æ£æ¥å¤±è´¥","errorCode":"Parameter|LengthInvalid"} LengthInvalid
+18 {"p_userid": 636, "p_foundedtime": "20160207", "p_offlineinfo": "1", "sign": "9c5459deed810145066ec60b5c2014bb", "p_brand": "1", "p_yearSalerroom": "1", "p_ecinfo": "1", "p_registeredcapital": "\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57"} {"errorMessage":"æªç¥éè¯¯","errorCode":"UnknownError"} UnknownError
+19 {"p_userid": 636, "p_foundedtime": "20160208", "p_offlineinfo": "1", "sign": "44d3875730a5582074dd8450b7b88648", "p_brand": "1", "p_yearSalerroom": "\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57", "p_ecinfo": "1", "p_registeredcapital": "1"} {"errorMessage":"æªç¥éè¯¯","errorCode":"UnknownError"} UnknownError
+20 {"p_userid": 636, "p_foundedtime": "20160209", "p_offlineinfo": "1", "sign": "f281d579a53243110bccad6b14653b36", "p_brand": "\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57", "p_yearSalerroom": "1", "p_ecinfo": "1", "p_registeredcapital": "1"} {"errorMessage":"æªç¥éè¯¯","errorCode":"UnknownError"} UnknownError
+21 {"p_userid": 636, "p_foundedtime": "20160210", "p_offlineinfo": "1", "sign": "ee48215e04a2fbfc66b1b26d69a84e2d", "p_brand": "1", "p_yearSalerroom": "1", "p_ecinfo": "\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57", "p_registeredcapital": "1"} {"errorMessage":"æªç¥éè¯¯","errorCode":"UnknownError"} UnknownError
+22 {"p_userid": 636, "p_foundedtime": "20160211", "p_offlineinfo": "\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57", "sign": "e542fe43e16529888fe848bd21b33075", "p_brand": "1", "p_yearSalerroom": "1", "p_ecinfo": "1", "p_registeredcapital": "1"} {"errorMessage":"æªç¥éè¯¯","errorCode":"UnknownError"} UnknownError
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>KWD.framework.testapi.case.test_adduser.TestAddUser: 测试用户注册接口【P_User__AddUser】</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c11',1)">详情</a></td>
+</tr>
+
+<tr id='ft11.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_adduser: 测试用户注册接口【P_User__AddUser】</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft11.1')" >
+        失败</a>
+
+    <div id='div_ft11.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft11.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft11.1: 1 {"p_username": "13333333333", "p_password": "302d9caacf792368848fe6472e4a626aae61d25e", "p_mobile": "13333333333", "sign": "2ff9315df46bb126d25882eac12a1c2b"} {"errorMessage":"ææºå·å·²å­å¨ï¼","errorCode":"P_User__AddUser|Mobile_Exist"} Mobile_Exist
+2 {"p_username": "16000000000", "p_password": "48d98cb0420fc2ec8c0f7a670bd61ae52f80186c", "p_mobile": "16000000000", "sign": "a8e08dc95ddc2702015ca987b52cd3ee"} {"errorMessage":"ææºå·å·²å­å¨ï¼","errorCode":"P_User__AddUser|Mobile_Exist"} Mobile_Exist
+3 {"p_username": "16111111111", "p_password": "ed9acd48dccb6ce2a7631e6489958163abfded9f", "p_mobile": "16111111111", "sign": "24155bd1c7c57c26092f7c9e5d737d31"} {"errorMessage":"ææºå·å·²å­å¨ï¼","errorCode":"P_User__AddUser|Mobile_Exist"} Mobile_Exist
+4 {"p_username": "16222222222", "p_password": "2698f32d7b0e4f9798915c47b38397862bcace75", "p_mobile": "16222222222", "sign": "3aac70026f539c020bb6eb60d14ae58c"} {"errorMessage":"ææºå·å·²å­å¨ï¼","errorCode":"P_User__AddUser|Mobile_Exist"} Mobile_Exist
+5 {"p_username": "16333333333", "p_password": "74508b1f0629f76bf92e989e2a6064383b58c690", "p_mobile": "16333333333", "sign": "b62772ca1582ab6ef76c1216056e40df"} {"errorMessage":"ææºå·å·²å­å¨ï¼","errorCode":"P_User__AddUser|Mobile_Exist"} Mobile_Exist
+6 {"p_username": "16444444444", "p_password": "302d9caacf792368848fe6472e4a626aae61d25e", "p_mobile": "16444444444", "sign": "98dd0185555871c5c37a2401d5ff73c0"} {"errorMessage":"ææºå·å·²å­å¨ï¼","errorCode":"P_User__AddUser|Mobile_Exist"} Mobile_Exist
+7 {"p_username": "13691466408", "p_password": "302d9caacf792368848fe6472e4a626aae61d25e", "p_mobile": "16555555555", "sign": "460f4d4b090a19649c0f8f2633a63e7b"} {"errorMessage":"ç¨æ·åå·²å­å¨ï¼","errorCode":"P_User__AddUser|Name_Exist"} Name_Exist
+8 {"p_username": "13333333733", "p_password": "302d9caacf792368848fe6472e4a626aae61d25e", "p_mobile": "13691466408", "sign": "9039c3c68e6d8d4f5ca9a7a1bb2876f1"} {"errorMessage":"ææºå·å·²å­å¨ï¼","errorCode":"P_User__AddUser|Mobile_Exist"} Mobile_Exist
+9 {"p_username": "16666666666", "p_password": "302d9caacf792368848fe6472e4a626aae61d25e", "p_mobile": "", "sign": "c14a420d39cd6403c80cf87f60fad3e1"} {"errorMessage":"ææºå·å¿é¡»æ¯11ä½ï¼","errorCode":"P_User__AddUser|Mobile_Wrong"} Mobile_Wrong
+10 {"p_username": "16777777777", "p_password": "302d9caacf792368848fe6472e4a626aae61d25e", "p_mobile": " ", "sign": "0f2871c45a057aede4074139c885889a"} {"errorMessage":"ææºå·å¿é¡»æ¯11ä½ï¼","errorCode":"P_User__AddUser|Mobile_Wrong"} Mobile_Wrong
+11 {"p_username": "16888888888", "p_password": "302d9caacf792368848fe6472e4a626aae61d25e", "p_mobile": null, "sign": "60e046e2baa7153026f5b951ca4987cd"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+12 {"p_username": "16999999999", "p_password": "302d9caacf792368848fe6472e4a626aae61d25e", "p_mobile": "\u4e09\u5927\u6cd5\u5e08\u7684", "sign": "271da66b4776c349dfd6bfa314b3aa5b"} {"errorMessage":"ææºå·å¿é¡»æ¯11ä½ï¼","errorCode":"P_User__AddUser|Mobile_Wrong"} Mobile_Wrong
+13 {"p_username": "", "p_password": "302d9caacf792368848fe6472e4a626aae61d25e", "p_mobile": "16666666666", "sign": "01937c3b00a31ebeff0f745f9b0d8884"} {"errorMessage":"ç¨æ·åä¸è½ä¸ºç©ºï¼","errorCode":"P_User__AddUser|NO_Name_Found"} NO_Name_Found
+14 {"p_username": " ", "p_password": "302d9caacf792368848fe6472e4a626aae61d25e", "p_mobile": "16777777777", "sign": "fe77f1273582353845ac47a6f108a03b"} {"errorMessage":"ç¨æ·åä¸è½ä¸ºç©ºï¼","errorCode":"P_User__AddUser|NO_Name_Found"} NO_Name_Found
+15 {"p_username": null, "p_password": "302d9caacf792368848fe6472e4a626aae61d25e", "p_mobile": "16888888888", "sign": "65b42ddc70b3a8483fc01e577b28593a"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+16 {"p_username": "\u4e09\u5927\u6cd5\u5e08\u7684", "p_password": "3d61dd5ada141c669d4269c4bcc3a4e38f112819", "p_mobile": "16999999999", "sign": "6b2d47f3241242baa9946d879b21e079"} {"errorMessage":"ææºå·å·²å­å¨ï¼","errorCode":"P_User__AddUser|Mobile_Exist"} Mobile_Exist
+17 {"p_username": "\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57", "p_password": "72506ff0d4195b4fb579fa2d633d22c9fd2b5e8d", "p_mobile": "16755555556", "sign": "07b3841ff707693bbb287d255bcc163d"} {"errorMessage":"ææºå·å·²å­å¨ï¼","errorCode":"P_User__AddUser|Mobile_Exist"} UnknownError
+Traceback (most recent call last):
+  File "D:\Keyworddriven\KWD\framework\testapi\case\test_adduser.py", line 18, in test_adduser
+    self.assertIn(case['code'], case['response'])
+AssertionError: 'UnknownError' not found in '{"errorMessage":"\xe6\x89\x8b\xe6\x9c\xba\xe5\x8f\xb7\xe5\xb7\xb2\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x81","errorCode":"P_User__AddUser|Mobile_Exist"}'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>KWD.framework.testapi.case.test_bind.TestBind: 测试绑定BEST接口【R_Bind__User】</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c12',1)">详情</a></td>
+</tr>
+
+<tr id='pt12.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_bind: 测试绑定BEST接口【R_Bind__User】</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt12.1')" >
+        通过</a>
+
+    <div id='div_pt12.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt12.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt12.1: 15108992788
+{'p_username': '15108992788', 'p_password': 'ae85d56c273d78797e6abf0987c43113d32fb7a2', 'p_mobile': '15108992788', 'sign': '6b154b935e8bc6fc529da2dd1f5651dd'}
+{"p_referrer": 0, "p_adress": "bOaihjFHn8Qs2Kp", "p_enterpriseCode": "bOaihjFHn8Qs2Kp", "sign": "4655bbacaf2a4e7a5c318f380c477f94", "p_locationid": "110101", "p_contacterEmail": "", "p_userid": 637, "p_contacter": "bOaihjFHn8Qs2Kp", "p_manageType": "bOaihjFHn8Qs2Kp", "p_contacterMobile": "15114325878", "p_enterpriseName": "bOaihjFHn8Qs2Kp"}
+{"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/4.jpg[,]20180203[,][;]3[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]5[,]attach/ceshi/4.jpg[,]20180203[,][;]6[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 6, "p_userid": 637, "sign": "23451a8ead60abb74b9921a549643969"}
+{"p_userid": 637, "p_foundedtime": "20111111", "p_offlineinfo": "", "sign": "695abb07d047acda74d81235af9d5718", "p_brand": "", "p_yearSalerroom": "", "p_ecinfo": "", "p_registeredcapital": ""}
+{"p_opid": 1, "p_merchantid": 601, "p_status": 4, "sign": "f5d7ffefb4c19c09e50ddbb08f7a3132", "p_approvememo": "EN2HrdiJ057xGOP"}
+1 {"user_id": 637, "BEST_password": "d41d8cd98f00b204e9800998ecf8427e", "user_type": "2", "id_code": "", "sign": "5c4de4dff33e7b8b93666f7535f86874", "BEST_user_id": "", "user_name": ""} {"errorMessage":"çµåç¨æ·åç¼ºå¤±","errorCode":"BEST|USER_NAME_LOSS"} USER_NAME_LOSS
+2 {"user_id": 637, "BEST_password": "330277c55fb5dc9147ff92b678251913", "user_type": "2", "id_code": "100000221", "sign": "4f3108775000fc8289ac5c1d7cd171e9", "BEST_user_id": "100000221", "user_name": ""} {"errorMessage":"çµåç¨æ·åç¼ºå¤±","errorCode":"BEST|USER_NAME_LOSS"} USER_NAME_LOSS
+3 {"user_id": 637, "BEST_password": "330277c55fb5dc9147ff92b678251913", "user_type": "2", "id_code": "100000221", "sign": "4f3108775000fc8289ac5c1d7cd171e9", "BEST_user_id": "100000221", "user_name": " "} {"errorMessage":"çµåç¨æ·åç¼ºå¤±","errorCode":"BEST|USER_NAME_LOSS"} USER_NAME_LOSS
+4 {"user_id": 637, "BEST_password": "330277c55fb5dc9147ff92b678251913", "user_type": "2", "id_code": "100000221", "sign": "62b6dcc950a47e3210ccd23f786dac91", "BEST_user_id": "100000221", "user_name": null} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+5 {"user_id": 637, "BEST_password": "330277c55fb5dc9147ff92b678251913", "user_type": "2", "id_code": "", "sign": "dd69d8c777c0edd70743241070a4dbaa", "BEST_user_id": "100000221", "user_name": "13691466408"} {"errorMessage":"çµåç¨æ·èº«ä»½è¯å·æç»ç»æºæä»£ç ç¼ºå¤±","errorCode":"BEST|ID_CODE_LOSS"} ID_CODE_LOSS
+6 {"user_id": 637, "BEST_password": "96e79218965eb72c92a549dd5a330112", "user_type": "2", "id_code": "100000221", "sign": "e1cc0b9ac3fc874b75de70fe3b13ff2d", "BEST_user_id": "", "user_name": "13691466408"} {"errorMessage":"BESTç¨æ·idç¼ºå¤±","errorCode":"BEST|BEST_USER_ID_LOSS"} BEST_USER_ID_LOSS
+7 {"user_id": 637, "BEST_password": "17d44cff686695e9302869ddb9e605fa", "user_type": "2", "id_code": "100000221", "sign": "c353f6fb0581af9b6f2e497bdb8f39c5", "BEST_user_id": "100000221", "user_name": "13691466408"} {"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"} BEST_USER_OR_PWD_INVALID
+8 {"user_id": 637, "BEST_password": "330277c55fb5dc9147ff92b678251913", "user_type": "2", "id_code": " ", "sign": "dd69d8c777c0edd70743241070a4dbaa", "BEST_user_id": "100000221", "user_name": "13691466408"} {"errorMessage":"çµåç¨æ·èº«ä»½è¯å·æç»ç»æºæä»£ç ç¼ºå¤±","errorCode":"BEST|ID_CODE_LOSS"} ID_CODE_LOSS
+9 {"user_id": 637, "BEST_password": "e7a9912201143b4731f12245f810c3da", "user_type": "2", "id_code": "100000221", "sign": "0e4a5e78c4eee3b25c22a25adcd26564", "BEST_user_id": " ", "user_name": "13691466408"} {"errorMessage":"BESTç¨æ·idç¼ºå¤±","errorCode":"BEST|BEST_USER_ID_LOSS"} BEST_USER_ID_LOSS
+10 {"user_id": 637, "BEST_password": "33b373c0e28f710e08d2c41edbb76189", "user_type": "2", "id_code": "100000221", "sign": "7fef93092d59fe2cb76f991da67663e7", "BEST_user_id": "100000221", "user_name": "13691466408"} {"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"} BEST_USER_OR_PWD_INVALID
+11 {"user_id": 637, "BEST_password": "330277c55fb5dc9147ff92b678251913", "user_type": "2", "id_code": null, "sign": "f3989b3164ecf8301c55601d39bc5039", "BEST_user_id": "100000221", "user_name": "13691466408"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+12 {"user_id": 637, "BEST_password": "a0ceaf69836ac6a4a45276b5e62f01ae", "user_type": "2", "id_code": "100000221", "sign": "4ebd856bf7578687017dea0a1c4be9c0", "BEST_user_id": null, "user_name": "13691466408"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+13 {"user_id": 637, "BEST_password": null, "user_type": "2", "id_code": "100000221", "sign": "64d809a6bc3d20748021ff3c4de2a16f", "BEST_user_id": "100000221", "user_name": "13691466408"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+14 {"user_id": 637, "BEST_password": "d4c43f2fdd8e4e1ccf892a9296f75103", "user_type": "2", "id_code": "100000221", "sign": "18267dbe22a7c8df9bf8ab535a704dea", "BEST_user_id": "100000222", "user_name": "13691466408"} {"errorMessage":"ç¨æ·èº«ä»½è¯å·æç»ç»æºæä»£ç ä¸ä¸è´","errorCode":"BEST|ID_CODE_INCONSISTENT"} ID_CODE_INCONSISTENT
+15 {"user_id": 637, "BEST_password": "44a5cc673e29bb67e5933e6ddb8d9502", "user_type": "2", "id_code": "qqqq", "sign": "eda4c59bca2768e78e8b2b51aaf4dce3", "BEST_user_id": "qqqq", "user_name": "13691466408"} {"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"} BEST_USER_OR_PWD_INVALID
+16 {"user_id": 637, "BEST_password": "ece3e2ea62029911e08a96aa70dff13c", "user_type": "2", "id_code": "\u53f8\u6cd5", "sign": "0fd1741cb86cd0f6f6f2f2b5aab07f7c", "BEST_user_id": "\u53f8\u6cd5", "user_name": "13691466408"} {"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"} BEST_USER_OR_PWD_INVALID
+17 {"user_id": 637, "BEST_password": "f4185271955edaad1c0688ab09ca4acf", "user_type": "2", "id_code": "100000221", "sign": "f91d5a923bd730e7adb2ec5346f6e568", "BEST_user_id": "100000221", "user_name": "13691466408"} {"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"} BEST_USER_OR_PWD_INVALID
+18 {"user_id": "", "BEST_password": "330277c55fb5dc9147ff92b678251913", "user_type": "2", "id_code": "100000221", "sign": "98e168386eb33d3cf309d6cac9c31947", "BEST_user_id": "100000221", "user_name": "13691466408"} {"errorMessage":"æªç¥éè¯¯","errorCode":"UnknownError"} UnknownError
+19 {"user_id": null, "BEST_password": "330277c55fb5dc9147ff92b678251913", "user_type": "2", "id_code": "100000221", "sign": "0b0a80137499f8748e3fdda259814ab5", "BEST_user_id": "100000221", "user_name": "13691466408"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+20 {"user_id": 637, "BEST_password": "fdd2a33d3dc9017d4cf9a0295879ed09", "user_type": "2", "id_code": "100000234", "sign": "c6067dce6a64379ac28da7930f75a974", "BEST_user_id": "100000234", "user_name": "13691466408"} {"errorMessage":"BESTè´¦å·å·²ç»ä¸å¶ä»çµåè´¦å·ç»å®","errorCode":"BEST|BEST_USER_BIND_OTHER_USER"} BEST_USER_BIND_OTHER_USER
+21 {"user_id": 637, "BEST_password": "7c4e4b664bc2878c46b7bb104d5e42a0", "user_type": "2", "id_code": "100000258", "sign": "dc3159c69b51e31b0b5867fdd7fbf4e1", "BEST_user_id": "100000258", "user_name": "www"} {} {}
+{"BEST_user_id": "100000258", "BEST_password": "7c4e4b664bc2878c46b7bb104d5e42a0", "user_id": 637, "sign": "6b5b119aad89bb07e56e36212751a217"}
+22 {"user_id": 637, "BEST_password": "330277c55fb5dc9147ff92b678251913", "user_type": "2", "id_code": "100000221", "sign": "bf02568f3fe4706374bb3e61cef916dd", "BEST_user_id": "100000221", "user_name": "xczv\u4e2dvnet.cn"} {"errorMessage":"çµåè´¦å·åBESTè´¦å·å·²ç»ç»å®","errorCode":"BEST|USER_BIND_BEST_USER"} USER_BIND_BEST_USER
+23 {"user_id": 637, "BEST_password": "330277c55fb5dc9147ff92b678251913", "user_type": "2", "id_code": "100000221", "sign": "75780abf63d2bc8c681d748791390468", "BEST_user_id": "100000221", "user_name": "13691466409"} {"errorMessage":"çµåè´¦å·åBESTè´¦å·å·²ç»ç»å®","errorCode":"BEST|USER_BIND_BEST_USER"} USER_BIND_BEST_USER
+24 {"user_id": 637, "BEST_password": "330277c55fb5dc9147ff92b678251913", "user_type": "2", "id_code": "100000221", "sign": "d392eb48bcc4d94cb873952eb31f16de", "BEST_user_id": "100000221", "user_name": "13691466408"} {"errorMessage":"çµåè´¦å·åBESTè´¦å·å·²ç»ç»å®","errorCode":"BEST|USER_BIND_BEST_USER"} USER_BIND_BEST_USER
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>KWD.framework.testapi.case.test_openshop.TestOpenShop: 测试开通店铺接口【P_Merchant__OpenShop】</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c13',1)">详情</a></td>
+</tr>
+
+<tr id='pt13.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_openshop: 测试开通店铺接口【P_Merchant__OpenShop】</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt13.1')" >
+        通过</a>
+
+    <div id='div_pt13.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt13.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt13.1: 15174907215
+{'p_username': '15174907215', 'p_password': '4e8da7a7e5acbc2fc28f146133669ce3d3229935', 'p_mobile': '15174907215', 'sign': '69e10e72c7b5e770bca3e781428e11cb'}
+{"p_referrer": 0, "p_adress": "waHXWgZl1ep0Q4h", "p_enterpriseCode": "waHXWgZl1ep0Q4h", "sign": "44218053dd86e9ef455411358b0ebf7f", "p_locationid": "110101", "p_contacterEmail": "", "p_userid": 638, "p_contacter": "waHXWgZl1ep0Q4h", "p_manageType": "waHXWgZl1ep0Q4h", "p_contacterMobile": "13693372574", "p_enterpriseName": "waHXWgZl1ep0Q4h"}
+{"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/4.jpg[,]20180203[,][;]3[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]5[,]attach/ceshi/4.jpg[,]20180203[,][;]6[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 6, "p_userid": 638, "sign": "29de30eca828f33ea2fa625275760ac8"}
+{"p_userid": 638, "p_foundedtime": "20111111", "p_offlineinfo": "", "sign": "cc7009c524fbdf59ad3eaa627845e5b8", "p_brand": "", "p_yearSalerroom": "", "p_ecinfo": "", "p_registeredcapital": ""}
+{"p_opid": 1, "p_merchantid": 602, "p_status": 4, "sign": "0ff4c8764b54cfad3758b1b96cbb1786", "p_approvememo": "MgtTJvjm4bF50IB"}
+{"user_id": 638, "BEST_password": "0c42cef3a8005e3bda82a1981f7e69a6", "user_type": "2", "id_code": "100000587", "sign": "a2f3c2d872d4cf3166fd7acc7b8f05d2", "BEST_user_id": "100000587", "user_name": "jrnz2q7QdubNUV6"}
+{}
+1 {"p_shopname": "", "p_userid": 638, "sign": "a5ebf31151281a7510ac68a45019ba3c"} {"errorMessage":"åºéºåç§°ä¸è½ä¸ºç©ºï¼","errorCode":"P_Merchant__OpenShop|No_Shopname"} No_Shopname
+2 {"p_shopname": null, "p_userid": 638, "sign": "526512951f9afa391db65dd28db6868b"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+3 {"p_shopname": " ", "p_userid": 638, "sign": "a5ebf31151281a7510ac68a45019ba3c"} {"errorMessage":"åºéºåç§°ä¸è½ä¸ºç©ºï¼","errorCode":"P_Merchant__OpenShop|No_Shopname"} No_Shopname
+4 {"p_shopname": "11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111", "p_userid": 638, "sign": "fb40de5a67186c63a32c0b3b8716f961"} {"errorMessage":"åæ°é¿åº¦æ£æ¥å¤±è´¥","errorCode":"Parameter|LengthInvalid"} LengthInvalid
+5 {"p_shopname": "1111111115511111111111111111111111111111111111111111111111111111111111111111111111111111111111111111", "p_userid": 638, "sign": "9ff8e205a95338171484e5ed0b56225a"} {"errorMessage":"åºéºåç§°å·²è¢«ä½¿ç¨ï¼","errorCode":"P_Merchant__OpenShop|ShopName_Exist"} ShopName_Exist
+6 {"p_shopname": "\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57\u6211\u662f\u4e94\u4e2a\u5b57", "p_userid": 638, "sign": "63069dc51488aad7ddb265ec7e5f2665"} {"errorMessage":"æªç¥éè¯¯","errorCode":"UnknownError"} UnknownError
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>KWD.framework.testapi.case.test_unbind.TestUnBind: 测试解绑BEST接口【R_UnBind__User】</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c14',1)">详情</a></td>
+</tr>
+
+<tr id='pt14.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_unbind: 测试解绑BEST接口【R_UnBind__User】</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt14.1')" >
+        通过</a>
+
+    <div id='div_pt14.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt14.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt14.1: 15110906154
+{'p_username': '15110906154', 'p_password': 'e8ce72b81f611d7d4ad5fd32e5a882824505496d', 'p_mobile': '15110906154', 'sign': 'a45eab90fc5a11b340bb05db09eef789'}
+{"p_referrer": 0, "p_adress": "82TGq6lAHt9fdVh", "p_enterpriseCode": "82TGq6lAHt9fdVh", "sign": "9e306ac1ca5230063885bff65bf7e835", "p_locationid": "110101", "p_contacterEmail": "", "p_userid": 639, "p_contacter": "82TGq6lAHt9fdVh", "p_manageType": "82TGq6lAHt9fdVh", "p_contacterMobile": "15821600868", "p_enterpriseName": "82TGq6lAHt9fdVh"}
+{"p_attachlist": "1[,]attach/ceshi/1.jpg[,]20180102[,][;]2[,]attach/ceshi/4.jpg[,]20180203[,][;]3[,]attach/ceshi/4.jpg[,]20180203[,][;]4[,]attach/ceshi/4.jpg[,]20180203[,][;]5[,]attach/ceshi/4.jpg[,]20180203[,][;]6[,]attach/ceshi/4.jpg[,]20180203[,][;]", "p_attachcount": 6, "p_userid": 639, "sign": "094ec21369300d7c8e357467f4bb567c"}
+{"p_userid": 639, "p_foundedtime": "20111111", "p_offlineinfo": "", "sign": "6ded035236f70c8854f5902b3e8739a9", "p_brand": "", "p_yearSalerroom": "", "p_ecinfo": "", "p_registeredcapital": ""}
+{"p_opid": 1, "p_merchantid": 603, "p_status": 4, "sign": "f58c77490b7448584f0fd37594cf7c77", "p_approvememo": "z3BfJEuiWs5wAh6"}
+{"user_id": 639, "BEST_password": "7bfe9b6636af050cb875baf4c82d2bec", "user_type": "2", "id_code": "100000976", "sign": "6948ac1b9d3bad0d3e3e0681e57926ed", "BEST_user_id": "100000976", "user_name": "mhn6JZCpDlWwUO5"}
+{}
+1 {"user_id": 639, "BEST_password": "d41d8cd98f00b204e9800998ecf8427e", "BEST_user_id": "", "sign": "3ddd3b7903530bcff9b07af0ad47c2e8"} {"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"} BEST_USER_OR_PWD_INVALID
+2 {"user_id": 639, "BEST_password": "96e79218965eb72c92a549dd5a330112", "BEST_user_id": "", "sign": "3f6f9c89a7947b2b669879156a0ca8d0"} {"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"} BEST_USER_OR_PWD_INVALID
+3 {"user_id": 639, "BEST_password": "17d44cff686695e9302869ddb9e605fa", "BEST_user_id": "100000221", "sign": "8869fe07d47ffd25205af5579793ff50"} {"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"} BEST_USER_OR_PWD_INVALID
+4 {"user_id": 639, "BEST_password": "e7a9912201143b4731f12245f810c3da", "BEST_user_id": " ", "sign": "fb61e71a4c9aaec3a61741ac0247a6b3"} {"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"} BEST_USER_OR_PWD_INVALID
+5 {"user_id": 639, "BEST_password": "33b373c0e28f710e08d2c41edbb76189", "BEST_user_id": "100000221", "sign": "56995d3146be20413d7d4493e2caec6e"} {"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"} BEST_USER_OR_PWD_INVALID
+6 {"user_id": 639, "BEST_password": "a0ceaf69836ac6a4a45276b5e62f01ae", "BEST_user_id": null, "sign": "552c5f434fc0729fe37d09a290963cb7"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+7 {"user_id": 639, "BEST_password": null, "BEST_user_id": "100000221", "sign": "2c5bb1c63b79f101b9bc656932a7f9dc"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+8 {"user_id": 639, "BEST_password": "bb01de01b5b58660066fd3b0734a1a27", "BEST_user_id": "qqq", "sign": "51af03da3985fc76ba52c0c67293ecf4"} {"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"} BEST_USER_OR_PWD_INVALID
+9 {"user_id": 639, "BEST_password": "0f6f95445cd51eb26de52738bb420110", "BEST_user_id": "100000221", "sign": "191e9dc6f0778614d2c10b6bef9c409a"} {"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"} BEST_USER_OR_PWD_INVALID
+10 {"user_id": "", "BEST_password": "330277c55fb5dc9147ff92b678251913", "BEST_user_id": "100000221", "sign": "9c31fd5932a2b89ff9f0acfeb787ab68"} {"errorMessage":"æªç¥éè¯¯","errorCode":"UnknownError"} UnknownError
+11 {"user_id": "29", "BEST_password": "330277c55fb5dc9147ff92b678251913", "BEST_user_id": "100000221", "sign": "80ece52398c1bf84c3289731727aa07b"} {"errorMessage":"BESTè´¦å·æ²¡æç»å®çµåç¨æ·","errorCode":"BEST|BEST_USER_NOT_BIND"} BEST_USER_NOT_BIND
+12 {"user_id": null, "BEST_password": "330277c55fb5dc9147ff92b678251913", "BEST_user_id": "100000221", "sign": "01c413e9f76e19256757463ffe9698fc"} {"errorMessage":"åæ°ä¸è½ä¸ºç©º","errorCode":"Parameter|NullValue"} NullValue
+13 {"user_id": 639, "BEST_password": "330277c55fb5dc9147ff92b678251913", "BEST_user_id": "100000221", "sign": "7dd0187f91a95da4e518daa91ccfe072"} {"errorMessage":"BESTè´¦å·æå¯ç éè¯¯","errorCode":"BEST|BEST_USER_OR_PWD_INVALID"} BEST_USER_OR_PWD_INVALID
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='total_row'>
+    <td>总计</td>
+    <td>14</td>
+    <td>12</td>
+    <td>2</td>
+    <td>0</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</div>
+</body>
+</html>

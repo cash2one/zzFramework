@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录 - UI自动化测试系统</title>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        #div_login {
+            position:absolute;
+            top:50%;
+            left:50%;
+            width: 300px;
+            height: 230px;
+            margin: -150px 0 0 -115px;
+}
+    </style>
+</head>
+<body>
+<div id="div_login">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title" align="center">登录 - 自动化测试系统</div>
+        </div>
+        <div class="panel-body">
+            <form method="post" action="/login">
+                <div class="input-group">
+                    <span class="input-group-addon">用户名</span>
+                    <input id="username" name="username" type="text" placeholder="请输入用户名" class="form-control">
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">密&nbsp;&nbsp;&nbsp;&nbsp;码</span>
+                    <input id="password" name="password" type="password" placeholder="请输入密码" class="form-control">
+                </div>
+                <br>
+                <button type="submit" class="btn btn-block btn-default">登录</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

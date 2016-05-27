@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页 - 自动化测试系统</title>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <script type="application/javascript">
+        function popDiv(showId,backId){
+            document.getElementById(showId).style.display = 'block';
+            document.getElementById(backId).style.display = 'block';
+
+            var backdiv = document.getElementById(backId);
+            backId.style.width = document.body.scrollWidth;
+            $("#"+backId).height($(document).height());
+
+        };
+    </script>
+    <style>
+        #back{
+            display:none;
+            position:absolute;
+            top:0%;
+            left:0%;
+            width:100%;
+            height:100%;
+            background-color:black;
+            z-index:1001;
+            -moz-opacity: 0.8;
+            opacity:.80;
+            filter:alpha(opacity=80);
+        }
+        #form{
+            display: none;
+            position:absolute;
+            top:40%;
+            left:40%;
+            width:10%;
+            height:10%;
+            background-color: gray;
+            z-index:1002;
+            overflow:auto;
+        }
+        #div_base {
+            position:absolute;
+            top:2%;
+            left:5%;
+            right:5%;
+            width: auto;
+            height: auto;
+            margin: -15px 0 0 0;
+}
+    </style>
+</head>
+<body>
+<div id="div_base">
+<h2>{{ user.name }} ,欢迎访问自动化测试系统，下面是目前的测试用例：</h2>
+<hr>
+<table cellpadding="0.5" class="table table-bordered">
+    <tr>
+        <th class="active">Suite</th>
+        <th class="active">Case</th>
+        <th class="active">Step</th>
+        <th class="active">Action</th>
+    </tr>
+    {% for suite in suites %}
+        <tr>
+        <td>{{ suite.name }}</td>
+        {% for case in cases %}
+            {% ifequal case.suite suite %}
+                <td>{{ case.name }}</td>
+            {% else %}
+                <td>&nbsp;</td>
+            {% endifequal %}
+
+            {% for step in steps %}
+            {% ifequal step.case case %}
+                <td>{{ step.step }}</td>
+                <td>{{ step.action }}</td>
+            {% else %}
+                <td>&nbsp;</td>
+            {% endifequal %}
+            {% endfor %}
+        {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+<hr>
+<h2>下面是目前文件中的接口测试用例：</h2>
+
+<table cellpadding="0.5" class="table table-bordered">
+    <tr>
+        <th class="active">test</th>
+        <th class="active">suite</th>
+        <th class="active">case</th>
+    </tr>
+    <tr>
+        <td rowspan="{{ file_num }}">API测试</td>
+        <td rowspan="{{ file_num }}">{{ pro }}</td>
+        <td>{% for file in files %}
+            {% if forloop.first %}{{ file }}{% endif %}{% endfor %}
+        </td>
+    </tr>
+    {% for file in files %}{% if not forloop.first %}<tr><td>{{ file }}</td></tr>{% endif %}
+    {% endfor %}
+</table>
+
+<br>
+<form  method="post">
+    <button type="submit" class="btn btn-primary" formaction="/view">查看上一次报告</button>
+&nbsp;&nbsp;&nbsp;
+    <button type="submit" class="btn btn-primary" formaction="/run" onclick="popDiv('form','back')">立即执行</button>
+
+&nbsp;&nbsp;&nbsp;
+    <button type="submit" class="btn btn-primary" formaction="/addcase">添加用例</button>
+    &nbsp;&nbsp;&nbsp;
+    <button type="submit" class="btn btn-primary" formaction="/project">project list</button>
+</form>
+</div>
+
+
+<div id="back" ></div>
+<div id="form" class="panel panel-default">
+    <div>
+        <div class="panel-body">正在执行，请等待.....</div>
+    </div>
+</div>
+
+</body>
+</html>
